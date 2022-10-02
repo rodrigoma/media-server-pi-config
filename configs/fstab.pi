@@ -1,0 +1,3 @@
+UUID=5BFA-041D        /media/1TB      exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
+UUID=6083-157B        /media/4TB      exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
+UUID=61FC-8549        /media/4TBII    exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0

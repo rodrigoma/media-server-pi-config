@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] install_noip.sh"
+echo "----------[START] 2_install_noip.sh"
 
 echo "create noip folder in /home/pi/noip"
 cd /home/pi
@@ -32,4 +32,4 @@ sudo crontab pi_root_cron
 echo "remove temp file"
 rm pi_root_cron
 
-echo "----------[ END ] install_noip.sh"
+echo "----------[ END ] 2_install_noip.sh"
