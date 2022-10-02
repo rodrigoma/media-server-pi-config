@@ -1,20 +1,70 @@
-# media-server-pi-config
+# Media Server Pi Config
 
+Instalation of..
+- [Raspberry Pi OS](#raspberry-pi-os-and-ssh)
+- [SSH](#raspberry-pi-os-and-ssh)
+- [GIT](#git)
+- [Samba](#samba)
+- [NO-IP](#no-ip)
+- [Mount External HDD](#mount-external-hdd)
+- [Plex Media Server](#plex-media-server)
+- [Docker](#docker)
+  - [Sickchill](#sickchill)
+  - [Mylar](#mylar)
+  - [Transmission](#transmission)
+  - [PyLoad](#pyload)
 
-## [PLEX]
+### Raspberry Pi OS and SSH
+
+Following the steps of [˜Prepare sdcard with headless Raspberry Pi OS˜](https://www.funkyton.com/install-plex-media-server-on-raspberry-pi/)
+
+Leaving the Plex installation for a later.
+
+Access `Pi Server` via `ssh -p <PORT> pi@<SERVER_IP>` to execute the follow commands. 
+
+### GIT
+
+Run the commands below to install git to be able to clone this repository.
+
+```
+sudo apt update
+sudo apt install git
+git config --global core.autocrlf input
+git clone https://github.com/rodrigoma/media-server-pi-config.git
+```
+
+### Samba
+
+### NO-IP
+
+Execute the file `./install_files/install_noip.sh` to configure NO-IP
+
+NOTE: you must have an account of [NO-IP](https://www.noip.com/)
+
+### Mount External HDD
+
+### Plex Media Server
 
 Disable Plex Media Server to run on startup
 
 `systemctl disable plexmediaserver`
 
-## [TRANSMISSION]
+### Docker
+
+#### Sickchill
+
+#### Mylar
+
+#### Transmission
 
 Script to run after download finish
 
 `/config/./runScript.sh`
 
+#### PyLoad
 
-## FONTES
+
+### Sources
 
 https://blog.anoff.io/2020-12-install-docker-raspi/
 
