@@ -17,6 +17,8 @@ echo "Change owner folders"
 sudo chown -R $PI_USER:$PI_USER /media
 echo "Change permissions folders"
 sudo chmod -R 755 /media
+echo "Create plexdrive/data"
+mkdir -p plexdrive/data
 
 echo "---------- fstab"
 
