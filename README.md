@@ -14,6 +14,8 @@ Instalation/Configuration of..
   - [Mylar](#mylar)
   - [Transmission](#transmission)
   - [PyLoad](#pyload)
+  - [Plexdrive](#plexdrive)
+  - [Komga](#komga)
 
 
 ## Raspberry Pi OS and SSH
