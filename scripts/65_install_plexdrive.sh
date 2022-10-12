@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 64_install_plexdrive.sh"
+echo "----------[START] 65_install_plexdrive.sh"
 
 sudo docker run -d \
 	--name plexdrive \
@@ -16,4 +16,4 @@ sudo docker run -d \
 	-e TZ=America/Sao_Paulo \
 	wiserain/plexdrive:latest
 
-echo "----------[ END ] 64_install_plexdrive.sh"
+echo "----------[ END ] 65_install_plexdrive.sh"
