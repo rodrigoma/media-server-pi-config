@@ -76,7 +76,7 @@ NOTE: Password will be asked.
 Execute the file `/scripts/./6_install_docker.sh` to install and configure Docker.
 
 
-## Sickchill
+### Sickchill
 
 Execute the file `/scripts/./61_install_sickchill.sh` to install Sickchill container.
 
@@ -98,6 +98,16 @@ Open Transmission and set the following script to run after download finish `/co
 ### PyLoad
 
 Execute the file `/scripts/./64_install_pyload.sh` to install PyLoad container.
+
+
+### Plexdrive
+
+Execute the file `/scripts/./65_install_plexdrive.sh` to install Plexdrive container.
+
+
+### Komga
+
+Execute the file `/scripts/./66_install_komga.sh` to install Komga container.
 
 
 ### Other configurations
