@@ -18,6 +18,13 @@ else
     echo 'HDD 1TB not mount yet'
 fi
 
+PATH2TB=/media/2TB/wakeup.txt
+if [ -f "$PATH2TB" ]; then
+    echo 'WakeUp 2TB' > /media/2TB/wakeup.txt
+else
+    echo 'HDD 2TB not mount yet'
+fi
+
 PATH4TB=/media/4TB/wakeup.txt
 if [ -f "$PATH4TB" ]; then
     echo 'WakeUp 4TB' > /media/4TB/wakeup.txt
