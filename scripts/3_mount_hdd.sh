@@ -9,6 +9,8 @@ echo "---------- Folders"
 
 echo "Create /media/1TB folder"
 sudo mkdir /media/1TB
+echo "Create /media/2TB folder"
+sudo mkdir /media/2TB
 echo "Create /media/4TB folder"
 sudo mkdir /media/4TB
 echo "Create /media/4TBII folder"
@@ -34,6 +36,11 @@ sleep 3
 
 echo "mount /media/1TB"
 sudo mount /media/1TB
+
+sleep 3
+
+echo "mount /media/2TB"
+sudo mount /media/2TB
 
 sleep 3
 
