@@ -6,6 +6,13 @@ create mask=0777
 directory mask=0777
 public=no
 
+[2TB]
+path = /media/2TB
+writeable=Yes
+create mask=0777
+directory mask=0777
+public=no
+
 [4TB]
 path = /media/4TB
 writeable=Yes
