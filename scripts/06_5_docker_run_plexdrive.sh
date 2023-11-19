@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 65_install_plexdrive.sh"
+echo "----------[START] 06_5_docker_run_plexdrive.sh"
 
 sudo docker run -d \
 	--name plexdrive \
@@ -12,8 +12,8 @@ sudo docker run -d \
 	-v /home/pi/CenterMediaNew/SupportApps/plexdrive/config:/config \
 	-v /home/pi/plexdrive/data:/data:shared \
 	-e PUID=1000 \
-	-e PGID="1000 --root-node-id <GOOGLE_DRIVE_FOLDER_ID> " \
+	-e PGID="1000 --root-node-id $GOOGLE_DRIVE_FOLDER_ID " \
 	-e TZ=America/Sao_Paulo \
 	wiserain/plexdrive:latest
 
-echo "----------[ END ] 65_install_plexdrive.sh"
+echo "----------[ END ] 06_5_docker_run_plexdrive.sh"

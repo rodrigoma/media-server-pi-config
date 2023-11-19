@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 62_install_mylar.sh"
+echo "----------[START] 06_2_docker_run_mylar.sh"
 
 sudo docker run -d \
 	--name mylar \
@@ -15,4 +15,4 @@ sudo docker run -d \
 	-p 8090:8090 \
 	linuxserver/mylar3:latest
 
-echo "----------[ END ] 62_install_mylar.sh"
+echo "----------[ END ] 06_2_docker_run_mylar.sh"

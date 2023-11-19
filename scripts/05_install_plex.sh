@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 5_install_plex.sh"
+echo "----------[START] 05_install_plex.sh"
 
 sudo apt install apt-transport-https -y
 
@@ -25,4 +25,4 @@ sudo chown root:root /etc/systemd/system/plexmediaserver.service.d/override.conf
 echo "Change permissions file"
 sudo chmod 644 /etc/systemd/system/plexmediaserver.service.d/override.conf
 
-echo "----------[ END ] 5_install_plex.sh"
+echo "----------[ END ] 05_install_plex.sh"

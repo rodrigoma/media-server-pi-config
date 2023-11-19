@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 3_mount_hdd.sh"
+echo "----------[START] 03_mount_hdd.sh"
 
 PI_HOME=/home/pi
 PI_USER=pi
@@ -56,14 +56,16 @@ sleep 3
 
 echo "---------- shortcuts"
 
+mkdir $PI_HOME/digaoflix
 echo "Create shortcuts for Comics and Series from 1TB"
 ln -s /media/1TB/Comics $PI_HOME/Comics
-ln -s /media/1TB/Series $PI_HOME/Series
+ln -s /media/1TB/Series $PI_HOME/digaoflix/tv_ongoing
 
 echo "Create shortcuts for SeriesAntigas from 4TB"
-ln -s /media/4TB/SeriesAntigas $PI_HOME/SeriesAntigas
+ln -s /media/4TB/SeriesAntigas $PI_HOME/digaoflix/tv_old
 
 echo "Create shortcuts for CenterMediaNew, pyload-download and torrents-download from 4TBII"
+ln -s /media/4TBII/SeriesStreaming $PI_HOME/digaoflix/on_streaming
 ln -s /media/4TBII/CenterMediaNew $PI_HOME/CenterMediaNew
 ln -s /media/4TBII/CenterMediaNew/tmp/pyload-download $PI_HOME/pyload-download
 ln -s /media/4TBII/CenterMediaNew/tmp/torrents $PI_HOME/torrents-download
@@ -71,16 +73,16 @@ ln -s /media/4TBII/CenterMediaNew/tmp/torrents $PI_HOME/torrents-download
 echo "---------- wakeup hdd"
 
 echo "copy wakeup_hdd.sh"
-cp scripts/wakeup_hdd.sh $PI_HOME/wakeup_hdd.sh
+cp scripts/wakeup_hdd.sh $PI_HOME/scripts/wakeup_hdd.sh
 
 echo "give executable rights"
-chmod +x $PI_HOME/wakeup_hdd.sh
+chmod +x $PI_HOME/scripts/wakeup_hdd.sh
 
 echo "write out current crontab"
 sudo crontab -u $PI_USER -l > pi_cron
 
 echo "echo new cron into cron file"
-echo "*/10 * * * * \$HOME/wakeup_hdd.sh > \$HOME/wakeup_hdd.log 2>&1" >> pi_cron
+echo "*/10 * * * * \$HOME/scripts/wakeup_hdd.sh > \$HOME/scripts/wakeup_hdd.log 2>&1" >> pi_cron
 
 echo "install new cron file"
 sudo crontab -u $PI_USER pi_cron
@@ -88,4 +90,4 @@ sudo crontab -u $PI_USER pi_cron
 echo "remove temp file"
 rm pi_cron
 
-echo "----------[ END ] 3_mount_hdd.sh"
+echo "----------[ END ] 03_mount_hdd.sh"

@@ -1,9 +1,10 @@
 # Media Server Pi Config
 
 Instalation/Configuration of..
-- [Raspberry Pi OS](#raspberry-pi-os-and-ssh)
-- [SSH](#raspberry-pi-os-and-ssh)
+- [Raspberry Pi OS and SSH](#raspberry-pi-os-and-ssh)
 - [GIT](#git)
+- [Export Variables](export-variables)
+- [Configurations](#configurations)
 - [Static IP](#static-ip)
 - [NO-IP](#no-ip)
 - [Mount External HDD](#mount-external-hdd)
@@ -16,6 +17,7 @@ Instalation/Configuration of..
   - [PyLoad](#pyload)
   - [Plexdrive](#plexdrive)
   - [Komga](#komga)
+- [SqlBak](#sqlbak)
 
 
 ## Raspberry Pi OS and SSH
@@ -41,82 +43,100 @@ cd media-server-pi-config
 ```
 
 
+## Export Variables
+
+Execute the file `/scripts/./export_vars.sh` to configure environment variables that will be used in others scripts.
+
+
+### Configurations
+
+Before the execution, Export Variables has to be configured.
+
+Execute the file `/scripts/./00_0_configs_geral.sh`.
+
+Execute the file `/scripts/./00_1_copy_scripts.sh`.
+
+
 ## Static IP
 
-Execute the file `/scripts/./1_config_static_ip.sh` to configure a static IP.
+Execute the file `/scripts/./01_config_static_ip.sh` to configure a static IP.
 
 NOTE: connection will be lost, new IP will be avaible.
 
 
 ## NO-IP
 
-Execute the file `/scripts/./2_install_noip.sh` to install and configure NO-IP.
+Execute the file `/scripts/./02_install_noip.sh` to install and configure NO-IP.
 
 NOTE: you must have a [NO-IP](https://www.noip.com/) account.
 
 
 ## Mount External HDD
 
-Execute the file `/scripts/./3_mount_hdd.sh` to configure the mounts of HDDs.
+Execute the file `/scripts/./03_mount_hdd.sh` to configure the mounts of HDDs.
 
 NOTE: HDDs must be connect in Raspberry PI.
 
 ## Samba
 
-Execute the file `/scripts/./4_install_samba.sh` to install and configure Samba.
+Execute the file `/scripts/./04_install_samba.sh` to install and configure Samba.
 
 
 ## Plex Media Server
 
-Execute the file `/scripts/./5_install_plex.sh` to install and configure Plex Media Server.
+Execute the file `/scripts/./05_install_plex.sh` to install and configure Plex Media Server.
 
 NOTE: Password will be asked.
 
 
 ## Docker
 
-Execute the file `/scripts/./6_install_docker.sh` to install and configure Docker.
+Execute the file `/scripts/./06_0_install_docker.sh` to install and configure Docker.
 
 
 ### Sickchill
 
-Execute the file `/scripts/./61_install_sickchill.sh` to install Sickchill container.
+Execute the file `/scripts/./06_1_docker_run_sickchill.sh` to install Sickchill container.
 
 
 ### Mylar
 
-Execute the file `/scripts/./62_install_mylar.sh` to install Mylar container.
+Execute the file `/scripts/./06_2_docker_run_mylar.sh` to install Mylar container.
 
 
 ### Transmission
 
-Before the execution, edit the `63_install_transmission.sh` changing both lines with `<YOUR_USER>` and `<YOUR_PASSWORD>`.
+Before the execution, Export Variables has to be configured.
 
-Execute the file `/scripts/./63_install_transmission.sh` to install Transmission container.
+Execute the file `/scripts/./06_3_docker_run_transmission.sh` to install Transmission container.
 
 Open Transmission and set the following script to run after download finish `/config/./runScript.sh`
 
 
 ### PyLoad
 
-Execute the file `/scripts/./64_install_pyload.sh` to install PyLoad container.
+Execute the file `/scripts/./06_4_docker_run_pyload.sh` to install PyLoad container.
 
 
 ### Plexdrive
 
-Execute the file `/scripts/./65_install_plexdrive.sh` to install Plexdrive container.
+Before the execution, Export Variables has to be configured.
+
+Execute the file `/scripts/./06_5_docker_run_plexdrive.sh` to install Plexdrive container.
 
 
 ### Komga
 
-Execute the file `/scripts/./66_install_komga.sh` to install Komga container.
+Execute the file `/scripts/./06_6_docker_run_komga.sh` to install Komga container.
 
 
-### Other configurations
+### SqlBak
 
-Before the execution, edit the `7_configs_geral.sh` changing `<YOUR_PORT>` for the port you want.
+Before the execution, Export Variables has to be configured.
 
-Execute the file `/scripts/./7_configs_geral.sh` to install PyLoad container.
+Execute the file `/scripts/./07_install_sqlbak.sh` to install SqlBak application.
+
+Check the dashboard on your account https://sqlbak.com/dashboard
 
 
 ## Sources
@@ -142,3 +162,5 @@ https://b2midia.freshdesk.com/support/solutions/articles/1000266606-configurando
 https://dausruddin.com/how-to-change-plex-user-running-under-in-ubuntu/
 
 https://unix.stackexchange.com/questions/204641/automatically-mount-a-drive-using-etc-fstab-and-limiting-access-to-all-users-o
+
+https://sqlbak.com/blog/automatic-backup-of-raspberry-pi-to-any-cloud/

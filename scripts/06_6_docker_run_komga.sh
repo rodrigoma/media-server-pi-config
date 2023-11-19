@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 66_install_komga.sh"
+echo "----------[START] 06_6_docker_run_komga.sh"
 
 sudo docker run -d \
 	--name komga \
@@ -14,4 +14,4 @@ sudo docker run -d \
 	-p 8080:8080 \
 	gotson/komga
 
-echo "----------[ END ] 66_install_komga.sh"
+echo "----------[ END ] 06_6_docker_run_komga.sh"

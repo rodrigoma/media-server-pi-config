@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 63_install_transmission.sh"
+echo "----------[START] 06_3_docker_run_transmission.sh"
 
 sudo docker run -d \
 	--name transmission \
@@ -9,8 +9,8 @@ sudo docker run -d \
 	-v /home/pi/CenterMediaNew/SupportApps/transmission/config:/config \
 	-v /home/pi/CenterMediaNew/SupportApps/transmission/watch:/watch \
 	-v /home/pi/torrents-download:/downloads \
-	-e USER=<YOUR_USER> \
-	-e PASS=<YOUR_PASSWORD> \
+	-e USER=$TRANSMISSION_USER \
+	-e PASS=$TRANSMISSION_PASSWORD \
 	-e PUID=1000 \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \
@@ -20,4 +20,4 @@ sudo docker run -d \
 	-p 51413:51413/udp \
 	linuxserver/transmission:latest
 
-echo "----------[ END ] 63_install_transmission.sh"
+echo "----------[ END ] 06_3_docker_run_transmission.sh"

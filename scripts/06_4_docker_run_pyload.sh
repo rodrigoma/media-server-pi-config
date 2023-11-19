@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 64_install_pyload.sh"
+echo "----------[START] 06_4_docker_run_pyload.sh"
 
 sudo docker run -d \
 	--name pyload-ng \
@@ -14,4 +14,4 @@ sudo docker run -d \
 	-p 8000:8000 \
 	linuxserver/pyload-ng:latest
 
-echo "----------[ END ] 64_install_pyload.sh"
+echo "----------[ END ] 06_4_docker_run_pyload.sh"
