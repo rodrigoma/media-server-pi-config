@@ -7,7 +7,7 @@ sudo docker run -d \
 	--hostname pyload-ng \
 	--network host \
 	-v /home/pi/CenterMediaNew/SupportApps/pyload/config:/config \
-	-v /home/pi/pyload-download:/downloads \
+	-v /home/pi/downloads/pyload:/downloads \
 	-e PUID=1000 \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \

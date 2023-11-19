@@ -7,7 +7,7 @@ sudo docker run -d \
 	--hostname sickchill \
 	--network host \
 	-v /home/pi/CenterMediaNew/SupportApps/sickchill/data:/config \
-	-v /home/pi/torrents-download/complete:/downloads \
+	-v /home/pi/downloads/torrents/complete:/downloads \
 	-v /home/pi/digaoflix/tv_ongoing:/tv \
 	-v /home/pi/digaoflix/tv_old/0Ajustar:/tvAntigas \
 	-v /home/pi/digaoflix/on_streaming:/streaming \

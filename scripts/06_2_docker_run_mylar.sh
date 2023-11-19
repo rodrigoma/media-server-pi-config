@@ -7,7 +7,7 @@ sudo docker run -d \
 	--hostname mylar \
 	--network host \
 	-v /home/pi/CenterMediaNew/SupportApps/mylar/data:/config \
-	-v /home/pi/torrents-download/complete:/downloads \
+	-v /home/pi/downloads/torrents/complete:/downloads \
 	-v /home/pi/Comics:/comics \
 	-e PGID=1000 \
 	-e PUID=1000 \

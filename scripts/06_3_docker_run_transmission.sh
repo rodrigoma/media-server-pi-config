@@ -8,7 +8,7 @@ sudo docker run -d \
 	--network host \
 	-v /home/pi/CenterMediaNew/SupportApps/transmission/config:/config \
 	-v /home/pi/CenterMediaNew/SupportApps/transmission/watch:/watch \
-	-v /home/pi/torrents-download:/downloads \
+	-v /home/pi/downloads/torrents:/downloads \
 	-e USER=$TRANSMISSION_USER \
 	-e PASS=$TRANSMISSION_PASSWORD \
 	-e PUID=1000 \

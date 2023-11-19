@@ -64,11 +64,12 @@ ln -s /media/1TB/Series $PI_HOME/digaoflix/tv_ongoing
 echo "Create shortcuts for SeriesAntigas from 4TB"
 ln -s /media/4TB/SeriesAntigas $PI_HOME/digaoflix/tv_old
 
-echo "Create shortcuts for CenterMediaNew, pyload-download and torrents-download from 4TBII"
+mkdir $PI_HOME/downloads
+echo "Create shortcuts for CenterMediaNew, downloads folders for pyload and torrent from 4TBII"
 ln -s /media/4TBII/SeriesStreaming $PI_HOME/digaoflix/on_streaming
 ln -s /media/4TBII/CenterMediaNew $PI_HOME/CenterMediaNew
-ln -s /media/4TBII/CenterMediaNew/tmp/pyload-download $PI_HOME/pyload-download
-ln -s /media/4TBII/CenterMediaNew/tmp/torrents $PI_HOME/torrents-download
+ln -s /media/4TBII/CenterMediaNew/tmp/pyload-download $PI_HOME/downloads/pyload
+ln -s /media/4TBII/CenterMediaNew/tmp/torrents $PI_HOME/downloads/torrents
 
 echo "---------- wakeup hdd"
 
