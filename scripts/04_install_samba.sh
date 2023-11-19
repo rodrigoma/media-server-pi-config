@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "----------[START] 4_install_samba.sh"
+echo "----------[START] 04_install_samba.sh"
 
 echo "Install Samba"
 sudo apt-get install samba samba-common-bin
@@ -14,4 +14,4 @@ sudo cat configs/smb.conf.pi >> /etc/samba/smb.conf
 echo "Set a password"
 sudo smbpasswd -a pi
 
-echo "----------[ END ] 4_install_samba.sh"
+echo "----------[ END ] 04_install_samba.sh"
