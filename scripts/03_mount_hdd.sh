@@ -70,6 +70,7 @@ ln -s /media/4TBII/SeriesStreaming $PI_HOME/digaoflix/on_streaming
 ln -s /media/4TBII/CenterMediaNew $PI_HOME/CenterMediaNew
 ln -s /media/4TBII/CenterMediaNew/tmp/pyload-download $PI_HOME/downloads/pyload
 ln -s /media/4TBII/CenterMediaNew/tmp/torrents $PI_HOME/downloads/torrents
+ln -s /media/4TBII/CenterMediaNew/backup $PI_HOME/backups
 
 echo "---------- wakeup hdd"
 
