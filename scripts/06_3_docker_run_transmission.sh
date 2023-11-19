@@ -14,7 +14,7 @@ sudo docker run -d \
 	-e PUID=1000 \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \
-	-e TRANSMISSION_WEB_HOME=/flood-for-transmission/ \
+	-e TRANSMISSION_WEB_HOME=/config/flood-for-transmission/ \
 	-p 9091:9091 \
 	-p 51413:51413 \
 	-p 51413:51413/udp \
