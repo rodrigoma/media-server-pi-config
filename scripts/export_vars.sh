@@ -179,7 +179,7 @@ else
 fi
 
 
-if [ "$restar" = true ]; then
+if [ "$restart" = true ]; then
     source ~/.bashrc
     source ~/.profile
 
