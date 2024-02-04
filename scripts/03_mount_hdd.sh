@@ -53,6 +53,11 @@ sudo cat /configs/fstab.pi >> /etc/fstab
 
 echo "" && sleep 2
 
+echo "reload fstab (login requires)"
+systemctl daemon-reload
+
+echo "" && sleep 2
+
 echo "---------- mount"
 
 echo "mount /media/1TB"
@@ -91,7 +96,7 @@ echo "" && sleep 2
 
 mkdir $HOME/downloads
 echo "Create shortcuts for CenterMediaNew, downloads folders for pyload and torrent from 2TB"
-ln -s /media/2TB/SeriesStreaming $HOME/digaoflix/on_streaming
+ln -s /media/4TBII/SeriesStreaming $HOME/digaoflix/on_streaming
 ln -s /media/2TB/CenterMediaNew $HOME/CenterMediaNew
 ln -s /media/2TB/CenterMediaNew/tmp/pyload-download $HOME/downloads/pyload
 ln -s /media/2TB/CenterMediaNew/tmp/torrents $HOME/downloads/torrents
