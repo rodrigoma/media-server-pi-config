@@ -29,6 +29,7 @@ sudo service plexmediaserver stop
 echo "" && sleep 2
 
 echo "Coping override.conf for Plex Media Server"
+sudo mkdir -p /etc/systemd/system/plexmediaserver.service.d
 sudo cp configs/override.conf.pi /etc/systemd/system/plexmediaserver.service.d/override.conf
 
 echo "" && sleep 2

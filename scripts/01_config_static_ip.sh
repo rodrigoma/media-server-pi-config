@@ -8,7 +8,7 @@ sudo cp /etc/dhcpcd.conf /etc/dhcpcd.conf.bkp
 echo "" && sleep 2
 
 echo "add lines in dhcpcd.conf"
-sudo cat configs/dhcpcd.conf.pi >> /etc/dhcpcd.conf
+sudo bash -c "cat configs/dhcpcd.conf.pi >> /etc/dhcpcd.conf"
 
 echo "" && sleep 2
 

@@ -13,7 +13,7 @@ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bkp
 echo "" && sleep 2
 
 echo "Adding HDD on Samba"
-sudo cat configs/smb.conf.pi >> /etc/samba/smb.conf
+sudo bash -c "cat configs/smb.conf.pi >> /etc/samba/smb.conf"
 
 echo "" && sleep 2
 
