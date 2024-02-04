@@ -18,6 +18,6 @@ sudo docker run -d \
 	-p 9091:9091 \
 	-p 51413:51413 \
 	-p 51413:51413/udp \
-	linuxserver/transmission:latest
+	lscr.io/linuxserver/transmission:arm64v8-latest
 
 echo "----------[ END ] 06_3_docker_run_transmission.sh"

@@ -12,6 +12,6 @@ sudo docker run -d \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \
 	-p 8000:8000 \
-	linuxserver/pyload-ng:latest
+	lscr.io/linuxserver/pyload-ng:arm64v8-latest
 
 echo "----------[ END ] 06_4_docker_run_pyload.sh"

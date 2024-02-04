@@ -15,6 +15,6 @@ sudo docker run -d \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \
 	-p 8081:8081 \
-	linuxserver/sickchill:latest
+	lscr.io/linuxserver/sickchill:arm64v8-latest
 
 echo "----------[ END ] 06_1_docker_run_sickchill.sh"

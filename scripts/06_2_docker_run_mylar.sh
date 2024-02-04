@@ -13,6 +13,6 @@ sudo docker run -d \
 	-e PUID=1000 \
 	-e TZ=America/Sao_Paulo \
 	-p 8090:8090 \
-	linuxserver/mylar3:latest
+	lscr.io/linuxserver/mylar3:arm64v8-latest
 
 echo "----------[ END ] 06_2_docker_run_mylar.sh"
