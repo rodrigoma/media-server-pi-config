@@ -1,5 +1,24 @@
-# pi server config
+# ------ Rede a Cabo
 interface eth0
-static ip_address=192.168.0.100/24
+arping 192.168.10.1
+arping 192.168.0.1
+fallback nicutpi2
+
+profile 192.168.0.1
+static ip_address=192.168.0.100
 static routers=192.168.0.1
 static domain_name_servers=192.168.0.1 8.8.8.8
+
+profile 192.168.10.1
+static ip_address=192.168.10.150
+static routers=192.168.10.1
+static domain_name_servers=192.168.10.1 8.8.8.8
+
+profile nicutpi2
+static ip_address=192.168.0.100
+
+# ------ Rede wireless
+interface wlan0
+static ip_address=192.168.10.160
+static routers=192.168.10.1
+static domain_name_servers=192.168.10.1 8.8.8.8

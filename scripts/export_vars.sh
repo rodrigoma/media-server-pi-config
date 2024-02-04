@@ -140,6 +140,44 @@ else
     echo "$variable_name_transmission_password is already set!";
 fi
 
+echo ""
+variable_name_wifi_ssid=WIFI_SSID
+if [ -z ${WIFI_SSID+x} ]; then
+    echo "$variable_name_wifi_ssid is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_wifi_ssid:"
+    read variable_value_wifi_ssid
+
+    echo ""
+    echo "adding " $variable_name_wifi_ssid " to environment variables..."
+    sudo echo "export "$variable_name_wifi_ssid"="$variable_value_wifi_ssid >> ~/.bashrc
+    sudo echo $variable_name_wifi_ssid"="$variable_value_wifi_ssid >> ~/.profile
+    echo $variable_name_wifi_ssid"="$variable_value_wifi_ssid | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_wifi_ssid is already set!";
+fi
+
+echo ""
+variable_name_wifi_pass=WIFI_PASS
+if [ -z ${WIFI_PASS+x} ]; then
+    echo "$variable_name_wifi_pass is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_wifi_pass:"
+    read variable_value_wifi_pass
+
+    echo ""
+    echo "adding " $variable_name_wifi_pass " to environment variables..."
+    sudo echo "export "$variable_name_wifi_pass"="$variable_value_wifi_pass >> ~/.bashrc
+    sudo echo $variable_name_wifi_pass"="$variable_value_wifi_pass >> ~/.profile
+    echo $variable_name_wifi_pass"="$variable_value_wifi_pass | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_wifi_pass is already set!";
+fi
+
 
 if [ "$restar" = true ]; then
     source ~/.bashrc
