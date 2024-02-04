@@ -1,0 +1,13 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces:
+auto lo
+iface lo inet loopback
+
+iface eth0 inet manual
+
+auto wlan0
+iface wlan0 inet manual
+        wpa-ssid "<WIFI-SSID>"
+        wpa-psk <WIFI-PASS>
+
+source /etc/network/interfaces.d/*
