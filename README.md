@@ -22,7 +22,10 @@ Instalation/Configuration of..
 
 ## Raspberry Pi OS and SSH
 
-Following the steps of [˜Prepare sdcard with headless Raspberry Pi OS˜](https://www.funkyton.com/install-plex-media-server-on-raspberry-pi/)
+Following the steps of 
+- [Prepare sdcard with headless Raspberry Pi OS](https://www.funkyton.com/install-plex-media-server-on-raspberry-pi/)
+- [How to Turn a Raspberry Pi Into a Plex Media Server](https://www.makeuseof.com/tag/raspberry-pi-plex-media-server/)
+
 
 Leaving the Plex installation for a later.
 
