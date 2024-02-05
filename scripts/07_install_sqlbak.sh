@@ -20,7 +20,7 @@ sudo chmod +x /usr/bin/mysql
 echo "" && sleep 2
 
 echo "register the server on sqlbak"
-sudo sqlbak -r -k $SQLBAK_TOKEN
+sudo sqlbak -r -k $SQLBAK_TOKEN -n pi
 
 echo "" && sleep 2
 
