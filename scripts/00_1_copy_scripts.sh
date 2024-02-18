@@ -73,6 +73,18 @@ chmod +x $HOME/scripts/06_*_docker_run*.sh
 
 echo "" && sleep 2
 
+echo "---------- Scripts SqlBak"
+
+echo "copy sql-bak scripts"
+cp scripts/sql-bak_*.sh $HOME/scripts/
+
+echo "" && sleep 2
+
+echo "give executable rights"
+chmod +x $HOME/scripts/sql-bak_*.sh
+
+echo "" && sleep 2
+
 echo "----------[ END ] 00_1_configs_geral.sh"
 
 echo "" && sleep 2
