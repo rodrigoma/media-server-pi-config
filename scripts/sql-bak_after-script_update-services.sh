@@ -10,10 +10,23 @@
 # loop through all containers source: https://gist.github.com/robsonke/c5c478bae476adb32d48
 #
 
+send_message()
+{
+    curl -X POST \
+        -H 'Content-Type: application/json' \
+        -d '{"chat_id": "'$CHAT_ID'", "text": "'"$1"'", "disable_notification": true}' \
+        https://api.telegram.org/$TELE_TOKEN/sendMessage
+}
+
+send_message "[SQL-BAK][AFTER ] Check apt update..."
 sudo apt update
 
-sudo apt list --upgradable
+listuptd=$(sudo apt list --upgradable | awk '{if(NR>1) print $1}')
 
+send_message "[SQL-BAK][AFTER ] Apps to update, execute manually: $listuptd"
+sleep 3
+
+send_message "[SQL-BAK][AFTER ] Updating Plex Media Server..."
 sudo apt -y install plexmediaserver
 sleep 3
 
@@ -24,7 +37,8 @@ host=$(hostname)
 # loop through all containers
 for container in $containers
 do
-  echo "Update Container: $container"
+  echo "Updating Container: $container"
+  send_message "[SQL-BAK][AFTER ] Updating Container: $container ..."
   
   $HOME/scripts/./update_docker_images.sh $container
   sleep 3
