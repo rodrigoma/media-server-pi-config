@@ -8,8 +8,10 @@
 # To be used in https://sqlbak.com in BEFORE SCRIPT session
 #
 
-docker stop pyload-ng mylar transmission sickchill
+# Stop all docker containers
+docker stop $(docker ps -a -q)
 
+# Stop plex
 sudo service plexmediaserver stop
 
 sleep 5
