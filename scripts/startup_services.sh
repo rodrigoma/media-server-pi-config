@@ -23,40 +23,29 @@ while [ ! -f /media/1TB/wakeup.txt -o ! -f /media/2TB/wakeup.txt -o ! -f /media/
     echo 'HDDs not mount yet'
     sleep 5
 done
-
 sleep 10
 
 send_message "[MOUNTED] HDDs"
-
 sleep 10
 
 hostname -I | send_message "[  IP   ] $(awk '{print $1}')"
-
 sleep 10
 
-echo "Start sickchill container"
-docker start sickchill
-send_message "[STARTED] Sickchill"
+# get all docker container names
+containers=$(sudo docker ps -a | awk '{if(NR>1) print $NF}')
+host=$(hostname)
 
-sleep 10
-
-echo "Start mylar container"
-docker start mylar
-send_message "[STARTED] Mylar"
-
-sleep 10
-
-echo "Start transmission container"
-docker start transmission
-send_message "[STARTED] Transmission"
-
-sleep 10
-
-echo "Start pyload-ng container"
-docker start pyload-ng
-send_message "[STARTED] Pyload"
-
-sleep 15
+# loop through all containers
+for container in $containers
+do
+  echo "Start Container: $container"
+  
+  docker start $container
+  send_message "[STARTED] $container"
+  sleep 10
+  
+  echo ================================
+done
 
 echo "Start Plex Media Service"
 sudo service plexmediaserver start
