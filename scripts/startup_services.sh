@@ -30,7 +30,7 @@ send_message "[MOUNTED] HDDs"
 
 sleep 10
 
-hostname -I | send_message "[IP] $(awk '{print $1}')"
+hostname -I | send_message "[  IP   ] $(awk '{print $1}')"
 
 sleep 10
 
