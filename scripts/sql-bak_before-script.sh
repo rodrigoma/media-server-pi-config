@@ -12,7 +12,7 @@ send_message()
 {
     curl -X POST \
         -H 'Content-Type: application/json' \
-        -d '{"chat_id": "'$CHAT_ID'", "text": "'"$1"'", "disable_notification": true}' \
+        -d '{"chat_id": "'$CHAT_ID'", "text": "<code>'"$1"'</code>", "parse_mode": "HTML", "disable_notification": true}' \
         https://api.telegram.org/$TELE_TOKEN/sendMessage
 }
 
