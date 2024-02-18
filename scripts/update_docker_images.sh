@@ -15,7 +15,7 @@ echo "--------------------------------------------"
 if [ $1 = "sickchill" ]; then
     echo "[SICKCHILL] Check if has updates..."
 
-    if ! docker pull linuxserver/sickchill | grep "Image is up to date"; then
+    if ! docker pull lscr.io/linuxserver/sickchill:arm64v8-latest | grep "Image is up to date"; then
         echo "[SICKCHILL] Image update, recreating container..."
         echo "[SICKCHILL] Stoping old container..."
         docker stop sickchill
@@ -37,7 +37,7 @@ echo "--------------------------------------------"
 if [ $1 = "mylar" ]; then
     echo "[MYLAR] Check if has updates..."
 
-    if ! docker pull linuxserver/mylar3 | grep "Image is up to date"; then
+    if ! docker pull lscr.io/linuxserver/mylar3:arm64v8-latest | grep "Image is up to date"; then
         echo "[MYLAR] Image update, recreating container..."
         echo "[MYLAR] Stoping old container..."
         docker stop mylar
@@ -59,7 +59,7 @@ echo "--------------------------------------------"
 if [ $1 = "transmission" ]; then
     echo "[TRANSMISSION] Check if has updates..."
 
-    if ! docker pull linuxserver/transmission | grep "Image is up to date"; then
+    if ! docker pull lscr.io/linuxserver/transmission:arm64v8-latest | grep "Image is up to date"; then
         echo "[TRANSMISSION] Image update, recreating container..."
         echo "[TRANSMISSION] Stoping old container..."
         docker stop transmission
@@ -81,7 +81,7 @@ echo "--------------------------------------------"
 if [ $1 = "pyload-ng" ]; then
     echo "[PYLOAD-NG] Check if has updates..."
 
-    if ! docker pull linuxserver/pyload-ng | grep "Image is up to date"; then
+    if ! docker pull lscr.io/linuxserver/pyload-ng:arm64v8-latest | grep "Image is up to date"; then
         echo "[PYLOAD-NG] Image update, recreating container..."
         echo "[PYLOAD-NG] Stoping old container..."
         docker stop pyload-ng
