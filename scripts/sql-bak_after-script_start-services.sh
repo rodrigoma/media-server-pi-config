@@ -19,7 +19,7 @@ for container in $containers
 do
   echo "Start Container: $container"
   
-  docker start $containers
+  docker start $container
   sleep 3
   
   echo ================================
