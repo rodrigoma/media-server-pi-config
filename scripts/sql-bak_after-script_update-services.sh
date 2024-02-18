@@ -26,7 +26,7 @@ for container in $containers
 do
   echo "Update Container: $container"
   
-  $HOME/scripts/./update_docker_images.sh $containers
+  $HOME/scripts/./update_docker_images.sh $container
   sleep 3
   
   echo ================================
