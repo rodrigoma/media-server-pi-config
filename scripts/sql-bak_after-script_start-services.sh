@@ -7,17 +7,22 @@
 #
 # To be used in https://sqlbak.com in AFTER SCRIPT session
 #
+# loop through all containers source: https://gist.github.com/robsonke/c5c478bae476adb32d48
+#
 
-docker start pyload-ng
-sleep 10
+# get all docker container names
+containers=$(sudo docker ps -a | awk '{if(NR>1) print $NF}')
+host=$(hostname)
 
-docker start mylar
-sleep 10
-
-docker start transmission
-sleep 10
-
-docker start sickchill
-sleep 10
+# loop through all containers
+for container in $containers
+do
+  echo "Start Container: $container"
+  
+  docker start $containers
+  sleep 3
+  
+  echo ================================
+done
 
 sudo service plexmediaserver start
