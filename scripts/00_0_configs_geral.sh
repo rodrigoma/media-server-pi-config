@@ -10,7 +10,7 @@ sudo timedatectl set-timezone America/Sao_Paulo
 echo "" && sleep 2
 
 echo "add ll alias"
-sed -i 's/#*alias ll=.*$/alias ll="ls -ahl"/g' ~/.bashrc
+echo "alias ll='ls -lah --color -h --group-directories-first'" > ~/.bash_aliases
 
 source ~/.bashrc
 
