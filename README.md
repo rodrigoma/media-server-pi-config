@@ -167,3 +167,5 @@ https://dausruddin.com/how-to-change-plex-user-running-under-in-ubuntu/
 https://unix.stackexchange.com/questions/204641/automatically-mount-a-drive-using-etc-fstab-and-limiting-access-to-all-users-o
 
 https://sqlbak.com/blog/automatic-backup-of-raspberry-pi-to-any-cloud/
+
+https://stackoverflow.com/questions/9457233/unlimited-bash-history
