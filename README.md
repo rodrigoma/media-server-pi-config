@@ -169,3 +169,5 @@ https://unix.stackexchange.com/questions/204641/automatically-mount-a-drive-usin
 https://sqlbak.com/blog/automatic-backup-of-raspberry-pi-to-any-cloud/
 
 https://stackoverflow.com/questions/9457233/unlimited-bash-history
+
+https://github.com/plexdrive/plexdrive/issues/421
