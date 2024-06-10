@@ -17,6 +17,8 @@ Instalation/Configuration of..
   - [PyLoad](#pyload)
   - [Plexdrive](#plexdrive)
   - [Komga](#komga)
+  - [WizNote](#wiznote)
+  - [WatchTower](#watchtower)
 - [SqlBak](#sqlbak)
 
 
@@ -131,6 +133,16 @@ Execute the file `/scripts/./06_5_docker_run_plexdrive.sh` to install Plexdrive 
 ### Komga
 
 Execute the file `/scripts/./06_6_docker_run_komga.sh` to install Komga container.
+
+
+### WizNote
+
+Execute the file `/scripts/./06_7_docker_run_wiznote.sh` to install WizNote container.
+
+
+### WatchTower
+
+Execute the file `/scripts/./06_8_docker_run_watchtower.sh` to install WatchTower container.
 
 
 ### SqlBak
