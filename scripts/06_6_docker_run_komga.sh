@@ -11,7 +11,7 @@ sudo docker run -d \
 	-e PUID=1000 \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \
-	-p 8080:8080 \
-	gotson/komga
+	-p 25600:25600 \
+	gotson/komga:latest
 
 echo "----------[ END ] 06_6_docker_run_komga.sh"
