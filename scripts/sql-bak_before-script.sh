@@ -19,7 +19,7 @@ send_message()
 send_message "[SQL-BAK][BEFORE] Backup process started..."
 
 # get all docker container names excluding plexdrive
-containers=$(docker ps --format "{{.Names}}" | grep -v "plexdrive")
+containers=$(docker ps -a --format "{{.Names}}" | grep -v "plexdrive")
 
 # Stop all docker containers
 send_message "[SQL-BAK][BEFORE] Stoping containers: $containers ..."
