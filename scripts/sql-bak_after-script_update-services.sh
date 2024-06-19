@@ -30,8 +30,8 @@ send_message "[SQL-BAK][AFTER ] Updating Plex Media Server..."
 sudo apt -y install plexmediaserver
 sleep 3
 
-# get all running docker container names
-containers=$(sudo docker ps | awk '{if(NR>1) print $NF}')
+# get all docker container names excluding plexdrive
+containers=$(docker ps --format "{{.Names}}" | grep -v "plexdrive")
 host=$(hostname)
 
 # loop through all containers

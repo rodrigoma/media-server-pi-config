@@ -20,8 +20,8 @@ send_message()
 
 send_message "[SQL-BAK][AFTER ] Start services..."
 
-# get all docker container names
-containers=$(sudo docker ps -a | awk '{if(NR>1) print $NF}')
+# get all docker container names excluding plexdrive
+containers=$(docker ps --format "{{.Names}}" | grep -v "plexdrive")
 host=$(hostname)
 
 # loop through all containers
