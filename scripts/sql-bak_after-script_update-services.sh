@@ -31,17 +31,17 @@ sudo apt -y install plexmediaserver
 sleep 3
 
 # get all docker container names excluding plexdrive
-containers=$(docker ps --format "{{.Names}}" | grep -v "plexdrive")
-host=$(hostname)
+# containers=$(docker -a ps --format "{{.Names}}" | grep -v "plexdrive")
+# host=$(hostname)
 
 # loop through all containers
-for container in $containers
-do
-  echo "Updating Container: $container"
-  send_message "[SQL-BAK][AFTER ] Updating Container: $container ..."
+# for container in $containers
+# do
+ #  echo "Updating Container: $container"
+  # send_message "[SQL-BAK][AFTER ] Updating Container: $container ..."
   
-  $HOME/scripts/./update_docker_images.sh $container
-  sleep 3
+  # $HOME/scripts/./update_docker_images.sh $container
+  # sleep 3
   
-  echo ================================
-done
+  # echo ================================
+# done

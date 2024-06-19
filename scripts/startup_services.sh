@@ -32,7 +32,7 @@ hostname -I | send_message "[  IP   ] $(awk '{print $1}')"
 sleep 10
 
 # get all docker container names
-containers=$(sudo docker ps -a | awk '{if(NR>1) print $NF}')
+containers=$(docker ps -a --format "{{.Names}}" | grep -v "plexdrive")
 host=$(hostname)
 
 # loop through all containers
