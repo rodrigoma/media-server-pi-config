@@ -1,0 +1,6 @@
+# os_release.yml
+---
+- name: Check OS release
+  command: cat /etc/os-release
+  register: os_result
+- debug: var=os_result.stdout_lines

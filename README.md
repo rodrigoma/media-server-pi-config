@@ -184,3 +184,9 @@ https://stackoverflow.com/questions/9457233/unlimited-bash-history
 
 https://github.com/plexdrive/plexdrive/issues/421
 
+## mac
+
+install brew and sshpass on mac
+https://www.cyberciti.biz/faq/how-to-install-sshpass-on-macos-os-x/
+
+executar ansible `ansible-playbook -i inventory.yml main.yml -k`

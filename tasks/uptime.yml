@@ -1,0 +1,6 @@
+# uptime.yml
+---
+- name: Execute uptime command
+  command: uptime
+  register: uptime_result
+- debug: var=uptime_result.stdout_lines
