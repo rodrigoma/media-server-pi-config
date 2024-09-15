@@ -19,30 +19,37 @@ send_message()
 
 echo "$(date)"
 
-PATH1TB=/media/1TB/wakeup.txt
-if [ -f "$PATH1TB" ]; then
-    echo 'WakeUp 1TB' > /media/1TB/wakeup.txt || (send_message "[1TB] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
-else
-    echo 'HDD 1TB not mount yet'
-fi
+# PATH1TB=/media/1TB/wakeup.txt
+# if [ -f "$PATH1TB" ]; then
+#     echo 'WakeUp 1TB' > /media/1TB/wakeup.txt || (send_message "[1TB] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
+# else
+#     echo 'HDD 1TB not mount yet'
+# fi
 
-PATH2TB=/media/2TB/wakeup.txt
-if [ -f "$PATH2TB" ]; then
-    echo 'WakeUp 2TB' > /media/2TB/wakeup.txt || (send_message "[2TB] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
-else
-    echo 'HDD 2TB not mount yet'
-fi
+# PATH2TB=/media/2TB/wakeup.txt
+# if [ -f "$PATH2TB" ]; then
+#     echo 'WakeUp 2TB' > /media/2TB/wakeup.txt || (send_message "[2TB] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
+# else
+#     echo 'HDD 2TB not mount yet'
+# fi
 
-PATH4TB=/media/4TB/wakeup.txt
-if [ -f "$PATH4TB" ]; then
-    echo 'WakeUp 4TB' > /media/4TB/wakeup.txt || (send_message "[4TB] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
-else
-    echo 'HDD 4TB not mount yet'
-fi
+# PATH4TB=/media/4TB/wakeup.txt
+# if [ -f "$PATH4TB" ]; then
+#     echo 'WakeUp 4TB' > /media/4TB/wakeup.txt || (send_message "[4TB] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
+# else
+#     echo 'HDD 4TB not mount yet'
+# fi
 
-PATH4TBII=/media/4TBII/wakeup.txt
-if [ -f "$PATH4TBII" ]; then
-    echo 'WakeUp 4TBII' > /media/4TBII/wakeup.txt || (send_message "[4TBII] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
+# PATH4TBII=/media/4TBII/wakeup.txt
+# if [ -f "$PATH4TBII" ]; then
+#     echo 'WakeUp 4TBII' > /media/4TBII/wakeup.txt || (send_message "[4TBII] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
+# else
+#     echo 'HDD 4TBII not mount yet'
+# fi
+
+PATH14TB=/media/14TB/wakeup.txt
+if [ -f "$PATH14TB" ]; then
+    echo 'WakeUp 14TB' > /media/14TB/wakeup.txt || (send_message "[14TB] DigaoFlix sera reiniciado!" ; sleep 10 ; sudo shutdown -r)
 else
-    echo 'HDD 4TBII not mount yet'
+    echo 'HDD 14TB not mount yet'
 fi

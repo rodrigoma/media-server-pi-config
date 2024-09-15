@@ -6,7 +6,7 @@ sudo docker run -d \
 	--name komga \
 	--hostname komga \
 	--network host \
-	-v /home/pi/CenterMediaNew/SupportApps/komga/config:/config \
+	-v /home/pi/centerMedia/SupportApps/komga/config:/config \
 	-v /home/pi/plexdrive/data:/data \
 	-e PUID=1000 \
 	-e PGID=1000 \

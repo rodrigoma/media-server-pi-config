@@ -1,27 +1,33 @@
+#[1TB]
+#path = /media/1TB
+#writeable=Yes
+#create mask=0777
+#directory mask=0777
+#public=no
 
-[1TB]
-path = /media/1TB
-writeable=Yes
-create mask=0777
-directory mask=0777
-public=no
+#[2TB]
+#path = /media/2TB
+#writeable=Yes
+#create mask=0777
+#directory mask=0777
+#public=no
 
-[2TB]
-path = /media/2TB
-writeable=Yes
-create mask=0777
-directory mask=0777
-public=no
+#[4TB]
+#path = /media/4TB
+#writeable=Yes
+#create mask=0777
+#directory mask=0777
+#public=no
 
-[4TB]
-path = /media/4TB
-writeable=Yes
-create mask=0777
-directory mask=0777
-public=no
+#[4TBII]
+#path = /media/4TBII
+#writeable=Yes
+#create mask=0777
+#directory mask=0777
+#public=no
 
-[4TBII]
-path = /media/4TBII
+[14TB]
+path = /media/14TB
 writeable=Yes
 create mask=0777
 directory mask=0777

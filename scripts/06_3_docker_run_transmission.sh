@@ -6,8 +6,8 @@ sudo docker run -d \
 	--name transmission \
 	--hostname transmission \
 	--network host \
-	-v /home/pi/CenterMediaNew/SupportApps/transmission/config:/config \
-	-v /home/pi/CenterMediaNew/SupportApps/transmission/watch:/watch \
+	-v /home/pi/centerMedia/SupportApps/transmission/config:/config \
+	-v /home/pi/centerMedia/SupportApps/transmission/watch:/watch \
 	-v /home/pi/downloads/torrents:/downloads \
 	-e USER=$TRANSMISSION_USER \
 	-e PASS=$TRANSMISSION_PASSWORD \

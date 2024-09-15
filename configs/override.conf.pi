@@ -1,4 +1,4 @@
 [Service]
-Environment="PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=/media/2TB/CenterMediaNew/SupportApps"
+Environment="PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR=/home/pi/centerMedia/SupportApps"
 User=pi
 Group=pi

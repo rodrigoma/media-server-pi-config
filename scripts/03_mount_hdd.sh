@@ -6,23 +6,28 @@ echo "" && sleep 2
 
 echo "---------- Folders"
 
-echo "Create /media/1TB folder"
-sudo mkdir /media/1TB
+# echo "Create /media/1TB folder"
+# sudo mkdir /media/1TB
 
-echo "" && sleep 2
+# echo "" && sleep 2
 
-echo "Create /media/2TB folder"
-sudo mkdir /media/2TB
+# echo "Create /media/2TB folder"
+# sudo mkdir /media/2TB
 
-echo "" && sleep 2
+# echo "" && sleep 2
 
-echo "Create /media/4TB folder"
-sudo mkdir /media/4TB
+# echo "Create /media/4TB folder"
+# sudo mkdir /media/4TB
 
-echo "" && sleep 2
+# echo "" && sleep 2
 
-echo "Create /media/4TBII folder"
-sudo mkdir /media/4TBII
+# echo "Create /media/4TBII folder"
+# sudo mkdir /media/4TBII
+
+# echo "" && sleep 2
+
+echo "Create /media/14TB folder"
+sudo mkdir /media/14TB
 
 echo "" && sleep 2
 
@@ -60,47 +65,49 @@ echo "" && sleep 2
 
 echo "---------- mount"
 
-echo "mount /media/1TB"
-sudo mount /media/1TB
+# echo "mount /media/1TB"
+# sudo mount /media/1TB
 
-echo "" && sleep 2
+# echo "" && sleep 2
 
-echo "mount /media/2TB"
-sudo mount /media/2TB
+# echo "mount /media/2TB"
+# sudo mount /media/2TB
 
-echo "" && sleep 2
+# echo "" && sleep 2
 
-echo "mount /media/4TB"
-sudo mount /media/4TB
+# echo "mount /media/4TB"
+# sudo mount /media/4TB
 
-echo "" && sleep 2
+# echo "" && sleep 2
 
-echo "mount /media/4TBII"
-sudo mount /media/4TBII
+# echo "mount /media/4TBII"
+# sudo mount /media/4TBII
+
+# echo "" && sleep 2
+
+echo "mount /media/14TB"
+sudo mount /media/14TB
 
 echo "" && sleep 2
 
 echo "---------- shortcuts"
 
+echo "Create shortcuts in digaoflix"
 mkdir $HOME/digaoflix
-echo "Create shortcuts for Comics and Series from 1TB"
-ln -s /media/1TB/Comics $HOME/Comics
-ln -s /media/1TB/Series $HOME/digaoflix/tv_ongoing
+ln -s /media/14TB/videos/series/old $HOME/digaoflix/tv_old
+ln -s /media/14TB/videos/series/ongoing $HOME/digaoflix/tv_ongoing
+ln -s /media/14TB/videos/series/streaming $HOME/digaoflix/on_streaming
 
 echo "" && sleep 2
 
-echo "Create shortcuts for SeriesAntigas from 4TB"
-ln -s /media/4TB/SeriesAntigas $HOME/digaoflix/tv_old
-
-echo "" && sleep 2
-
+echo "Create shortcuts in downloads"
 mkdir $HOME/downloads
-echo "Create shortcuts for CenterMediaNew, downloads folders for pyload and torrent from 2TB"
-ln -s /media/4TBII/SeriesStreaming $HOME/digaoflix/on_streaming
-ln -s /media/2TB/CenterMediaNew $HOME/CenterMediaNew
-ln -s /media/2TB/CenterMediaNew/tmp/pyload-download $HOME/downloads/pyload
-ln -s /media/2TB/CenterMediaNew/tmp/torrents $HOME/downloads/torrents
-ln -s /media/2TB/CenterMediaNew/backup $HOME/backups
+ln -s /media/14TB/download-mylar $HOME/downloads/mylar
+ln -s /media/14TB/download-pyload $HOME/downloads/pyload
+ln -s /media/14TB/download-torrent $HOME/downloads/torrents
+
+echo "Create backups shortcut"
+ln -s /home/pi/centerMedia/backup $HOME/backups
 
 echo "" && sleep 2
 

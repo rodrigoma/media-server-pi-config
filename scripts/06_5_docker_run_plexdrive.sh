@@ -9,7 +9,7 @@ sudo docker run -d \
 	--cap-add SYS_ADMIN \
 	--device /dev/fuse \
 	--security-opt apparmor=unconfined \
-	-v /home/pi/CenterMediaNew/SupportApps/plexdrive/config:/config \
+	-v /home/pi/centerMedia/SupportApps/plexdrive/config:/config \
 	-v /home/pi/plexdrive/data:/data:shared \
 	-e PUID=1000 \
 	-e PGID="1000 --root-node-id $GOOGLE_DRIVE_FOLDER_ID " \

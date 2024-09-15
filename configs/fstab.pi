@@ -1,4 +1,13 @@
-UUID=5BFA-041D        /media/1TB      exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
-UUID=5AE8-FF31        /media/2TB      exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
-UUID=6083-157B        /media/4TB      exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
-UUID=61FC-8549        /media/4TBII    exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
+proc				  /proc           proc    defaults          0       0
+PARTUUID=fce6a18e-01  /boot/firmware  vfat    defaults          0       2
+PARTUUID=fce6a18e-02  /               ext4    defaults,noatime  0       1
+
+UUID=22C819F1C819C3C7 /media/14TB     ntfs    defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
+
+#UUID=5BFA-041D        /media/1TB      exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
+#UUID=7629-FE4A        /media/2TB      exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
+#UUID=3AC4-EE8F        /media/4TB      exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
+#UUID=61FC-8549        /media/4TBII    exfat   defaults,auto,rw,uid=1000,gid=1000,umask=022,nofail 0 0
+
+# a swapfile is not a swap partition, no line here
+#   use  dphys-swapfile swap[on|off]  for that
