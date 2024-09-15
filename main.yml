@@ -1,9 +1,9 @@
 - name: Setup Raspberry Pi
   hosts: all
   vars:
-    # swap_size_mb: 1024
-    # git_user_email: "<email>"
-    # git_user_name: "<name>"
+    swap_size_mb: 1024
+    git_user_email: "<email>"
+    git_user_name: "<name>"
     # zerotier_network_id: "<network_id>"
     # airsane_build_dir: "{{ ansible_env.HOME }}/Projects/AirSane-build/"
     # usb_device_path: "/dev/sda1"
@@ -11,15 +11,15 @@
   tasks:
     - name: 001 Initial setup
       ansible.builtin.include_tasks:
-        file: tasks/uptime.yml
+        file: tasks/initial_setup.yml
 
-    - name: 002 SWAP
-      ansible.builtin.include_tasks:
-        file: tasks/os_release.yml
-
-    # - name: GIT
+    # - name: 002 SWAP
     #   ansible.builtin.include_tasks:
-    #     file: tasks/git.yml
+    #     file: tasks/swap.yml
+
+    - name: 003 GIT
+      ansible.builtin.include_tasks:
+        file: tasks/git.yml
 
     # - name: SSH
     #   ansible.builtin.include_tasks:

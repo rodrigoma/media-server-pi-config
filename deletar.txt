@@ -1,0 +1,7 @@
+docker run -d \
+	--name debian \
+	--hostname debian \
+	-e TZ=America/Sao_Paulo \
+	-e ROOT_PASSWORD=root \
+	-p 8022:22 \
+	takeyamajp/debian-sshd:bookworm

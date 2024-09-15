@@ -1,0 +1,67 @@
+- name: Infos
+  hosts: all
+  tasks:
+    - name: Displays the distribution name and version
+      command: cat /etc/os-release
+      register: os_result
+    - debug: var=os_result.stdout_lines
+
+    - name: Displays the kernel name
+      command: uname --kernel-name
+      register: kernelname_result
+    - debug: var=kernelname_result.stdout_lines
+
+    - name: Displays the network node hostname
+      command: uname --nodename
+      register: nodename_result
+    - debug: var=nodename_result.stdout_lines
+
+    - name: Displays the kernel release
+      command: uname --kernel-release
+      register: kernelrelease_result
+    - debug: var=kernelrelease_result.stdout_lines
+
+    - name: Displays the kernel version
+      command: uname --kernel-version
+      register: kernelversion_result
+    - debug: var=kernelversion_result.stdout_lines
+
+    - name: Displays the machine hardware name
+      command: uname --machine
+      register: machine_result
+    - debug: var=machine_result.stdout_lines
+
+    - name: Displays the processor type (non-portable)
+      command: uname --processor
+      register: processor_result
+    - debug: var=processor_result.stdout_lines
+
+    - name: Displays the hardware platform (non-portable)
+      command: uname --hardware-platform
+      register: hardware_result
+    - debug: var=hardware_result.stdout_lines
+
+    - name: Displays the operating system
+      command: uname --operating-system
+      register: operating_result
+    - debug: var=operating_result.stdout_lines
+
+    - name: Displays detailed information about the Ubuntu version, including the release number and description line
+      command: lsb_release -a
+      register: lsb_result
+    - debug: var=lsb_result.stdout_lines
+
+    - name: Displays more information about the Linux version
+      command: hostnamectl
+      register: hostnamectl_result
+    - debug: var=hostnamectl_result.stdout_lines
+
+    - name: Checks the system's architecture, but is not available on all Linux distributions
+      command: arch
+      register: arch_result
+    - debug: var=arch_result.stdout_lines
+    
+    - name: Execute uptime command
+      command: uptime
+      register: uptime_result
+    - debug: var=uptime_result.stdout_lines
