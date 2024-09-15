@@ -6,10 +6,11 @@ sudo docker run -d \
 	--name sickchill \
 	--hostname sickchill \
 	--network host \
-	-v /home/pi/CenterMediaNew/SupportApps/sickchill/data:/config \
+	-v /home/pi/centerMedia/SupportApps/sickchill/data:/config \
 	-v /home/pi/downloads/torrents/complete:/downloads \
 	-v /home/pi/digaoflix/tv_ongoing:/tv \
-	-v /home/pi/digaoflix/tv_old/0Ajustar:/tvAntigas \
+	-v /home/pi/digaoflix/tv_old/30min:/tvAntigas30min \
+	-v /home/pi/digaoflix/tv_old/60min:/tvAntigas60min \
 	-v /home/pi/digaoflix/on_streaming:/streaming \
 	-e PUID=1000 \
 	-e PGID=1000 \

@@ -46,6 +46,25 @@ else
 fi
 
 echo ""
+variable_name_tele_token_watchtower=TELE_TOKEN_WATCHTOWER
+if [ -z ${TELE_TOKEN_WATCHTOWER+x} ]; then
+    echo "$variable_name_tele_token_watchtower is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_tele_token_watchtower:"
+    read variable_value_tele_token_watchtower
+
+    echo ""
+    echo "adding " $variable_name_tele_token_watchtower " to environment variables..."
+    sudo echo "export "$variable_name_tele_token_watchtower"="$variable_value_tele_token_watchtower >> ~/.bashrc
+    sudo echo $variable_name_tele_token_watchtower"="$variable_value_tele_token_watchtower >> ~/.profile
+    echo $variable_name_tele_token_watchtower"="$variable_value_tele_token_watchtower | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_tele_token_watchtower is already set!";
+fi
+
+echo ""
 variable_name_gdrive_folder_id=GOOGLE_DRIVE_FOLDER_ID
 if [ -z ${GOOGLE_DRIVE_FOLDER_ID+x} ]; then
     echo "$variable_name_gdrive_folder_id is unset";

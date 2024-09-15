@@ -6,7 +6,7 @@ sudo docker run -d \
 	--name wiznote \
 	--hostname wiznote \
 	--network host \
-	-v /home/pi/CenterMediaNew/SupportApps/wiznote/data:/wiz/storage \
+	-v /home/pi/centerMedia/SupportApps/wiznote/data:/wiz/storage \
 	-e PUID=1000 \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \
