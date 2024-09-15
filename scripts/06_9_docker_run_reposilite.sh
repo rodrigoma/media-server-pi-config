@@ -6,6 +6,9 @@ sudo docker run -d \
 	--name reposilite \
 	--hostname reposilite \
 	--network host \
+	--label=sqlbak.stop.first=true \
+	--label=sqlbak.start.first=false \
+	--label=com.centurylinklabs.watchtower.enable=true \
 	-v /home/pi/centerMedia/SupportApps/reposilite:/app/data \
 	-e REPOSILITE_OPTS="--port 9999" \
 	-e PUID=1000 \

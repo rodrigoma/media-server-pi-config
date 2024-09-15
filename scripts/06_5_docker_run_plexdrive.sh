@@ -6,6 +6,9 @@ sudo docker run -d \
 	--name plexdrive \
 	--hostname plexdrive \
 	--network host \
+	--label=sqlbak.stop.first=false \
+	--label=sqlbak.start.first=true \
+	--label=com.centurylinklabs.watchtower.enable=false \
 	--cap-add SYS_ADMIN \
 	--device /dev/fuse \
 	--security-opt apparmor=unconfined \

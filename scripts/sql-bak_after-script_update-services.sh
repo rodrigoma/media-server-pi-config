@@ -26,22 +26,8 @@ listuptd=$(sudo apt list --upgradable | awk '{if(NR>1) print $1}')
 send_message "[SQL-BAK][AFTER ] Apps to update, execute manually: $listuptd"
 sleep 3
 
+## TODO create script to update all upgradable apt list, included docker service, because all containers are stopped.
+
 send_message "[SQL-BAK][AFTER ] Updating Plex Media Server..."
 sudo apt -y install plexmediaserver
 sleep 3
-
-# get all docker container names excluding plexdrive
-# containers=$(docker -a ps --format "{{.Names}}" | grep -v "plexdrive")
-# host=$(hostname)
-
-# loop through all containers
-# for container in $containers
-# do
- #  echo "Updating Container: $container"
-  # send_message "[SQL-BAK][AFTER ] Updating Container: $container ..."
-  
-  # $HOME/scripts/./update_docker_images.sh $container
-  # sleep 3
-  
-  # echo ================================
-# done

@@ -6,8 +6,11 @@ sudo docker run -d \
 	--name watchtower \
 	--hostname watchtower \
 	--network host \
+	--label=sqlbak.stop.first=false \
+	--label=sqlbak.start.first=true \
 	-v /var/run/docker.sock:/var/run/docker.sock \
 	-e WATCHTOWER_DEBUG=true \
+	-e WATCHTOWER_LABEL_ENABLE=true \
 	-e WATCHTOWER_HTTP_API_UPDATE=true \
 	-e WATCHTOWER_HTTP_API_PERIODIC_POLLS=false \
 	-e WATCHTOWER_HTTP_API_METRICS=true \
@@ -18,6 +21,6 @@ sudo docker run -d \
 	-e PUID=1000 \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \
-	containrrr/watchtower sickchill mylar transmission pyload-ng komga reposilite
+	containrrr/watchtower
 
 echo "----------[ END ] 06_8_docker_run_watchtower.sh"

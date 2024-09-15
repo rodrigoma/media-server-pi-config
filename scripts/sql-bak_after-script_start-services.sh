@@ -20,21 +20,22 @@ send_message()
 
 send_message "[SQL-BAK][AFTER ] Start services..."
 
-# get all docker container names excluding plexdrive
-containers=$(docker ps -a --format "{{.Names}}" | grep -v "plexdrive")
-host=$(hostname)
+###### start first essencial containers
+###### after start containers that depends from other containers
 
-# loop through all containers
-for container in $containers
-do
-  echo "Starting Container: $container"
-  send_message "[SQL-BAK][AFTER ] Starting Container: $container ..."
-  
-  docker start $container
-  sleep 3
-  
-  echo ================================
-done
+# get all docker container labeled sqlbak.start.first=true
+start_first=$(docker ps --filter "label=sqlbak.start.first=true" --format "{{.Names}}")
+send_message "[SQL-BAK][AFTER ] Starting first containers: $start_first ..."
+docker start $start_first
+
+sleep 30
+
+# get all docker container labeled sqlbak.start.first=false
+start_later=$(docker ps --filter "label=sqlbak.start.first=false" --format "{{.Names}}")
+send_message "[SQL-BAK][AFTER ] Starting later containers: $start_later ..."
+docker start $start_later
+
+sleep 5
 
 send_message "[SQL-BAK][AFTER ] Starting Plex Media Server..."
 sudo service plexmediaserver start

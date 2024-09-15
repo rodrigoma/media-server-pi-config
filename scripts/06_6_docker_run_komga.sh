@@ -6,6 +6,9 @@ sudo docker run -d \
 	--name komga \
 	--hostname komga \
 	--network host \
+	--label=sqlbak.stop.first=true \
+	--label=sqlbak.start.first=false \
+	--label=com.centurylinklabs.watchtower.enable=true \
 	-v /home/pi/centerMedia/SupportApps/komga/config:/config \
 	-v /home/pi/plexdrive/data:/data \
 	-e PUID=1000 \

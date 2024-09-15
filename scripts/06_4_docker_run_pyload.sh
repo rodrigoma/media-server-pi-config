@@ -6,6 +6,9 @@ sudo docker run -d \
 	--name pyload-ng \
 	--hostname pyload-ng \
 	--network host \
+	--label=sqlbak.stop.first=true \
+	--label=sqlbak.start.first=false \
+	--label=com.centurylinklabs.watchtower.enable=true \
 	-v /home/pi/centerMedia/SupportApps/pyload/config:/config \
 	-v /home/pi/downloads/pyload:/downloads \
 	-e PUID=1000 \
