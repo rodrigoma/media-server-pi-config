@@ -26,14 +26,14 @@ send_message "[SQL-BAK][AFTER ] Start services..."
 # get all docker container labeled sqlbak.start.first=true
 start_first=$(docker ps --filter "label=sqlbak.start.first=true" --format "{{.Names}}")
 send_message "[SQL-BAK][AFTER ] Starting first containers: $start_first ..."
-docker start $start_first
+docker start plexdrive watchtower
 
 sleep 30
 
 # get all docker container labeled sqlbak.start.first=false
 start_later=$(docker ps --filter "label=sqlbak.start.first=false" --format "{{.Names}}")
 send_message "[SQL-BAK][AFTER ] Starting later containers: $start_later ..."
-docker start $start_later
+docker start komga pyload-ng transmission sickchill mylar reposilite
 
 sleep 5
 
