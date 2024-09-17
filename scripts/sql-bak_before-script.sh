@@ -22,14 +22,14 @@ send_message "[SQL-BAK][BEFORE] Backup process started..."
 ###### after stop essencial containers
 
 # get all docker container labeled sqlbak.stop.first=true
-stop_first=$(docker ps --filter "label=sqlbak.stop.first=true" --format "{{.Names}}")
+stop_first=$(docker ps -a --filter "label=sqlbak.stop.first=true" --format "{{.Names}}")
 send_message "[SQL-BAK][BEFORE] Stoping first containers: $stop_first ..."
 docker stop $stop_first
 
 sleep 10
 
 # get all docker container labeled sqlbak.stop.first=false
-stop_later=$(docker ps --filter "label=sqlbak.stop.first=false" --format "{{.Names}}")
+stop_later=$(docker ps -a --filter "label=sqlbak.stop.first=false" --format "{{.Names}}")
 send_message "[SQL-BAK][BEFORE] Stoping later containers: $stop_later ..."
 docker stop $stop_later
 
