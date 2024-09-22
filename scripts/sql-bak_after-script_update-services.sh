@@ -10,24 +10,22 @@
 # loop through all containers source: https://gist.github.com/robsonke/c5c478bae476adb32d48
 #
 
-send_message()
-{
-    curl -X POST \
-        -H 'Content-Type: application/json' \
-        -d '{"chat_id": "'$CHAT_ID'", "text": "<code>'"$1"'</code>", "parse_mode": "HTML", "disable_notification": true}' \
-        https://api.telegram.org/$TELE_TOKEN/sendMessage
-}
-
-send_message "[SQL-BAK][AFTER ] Check apt update..."
+echo "[SQL-BAK][AFTER ] Check apt update..."
 sudo apt update
 
-listuptd=$(sudo apt list --upgradable | awk '{if(NR>1) print $1}')
+listuptd=""
+for pkg in $(apt list --upgradable 2>/dev/null | awk -F/ 'NR>1 {print $1}'); do
+  listuptd="$listuptd\n- $pkg"
+done
 
-send_message "[SQL-BAK][AFTER ] Apps to update, execute manually: $listuptd"
+curl http://192.168.10.100:9000/notify/465a67f962121ed2e5f0e6b55c3a75292903c1dbd5ba9bb5d0a85f0aa27ee6d2 \
+  -H "Content-Type: application/json" \
+  -d '{ "title":"[SQL-BAK][AFTER ] Apps to update", "body":"'"execute manually: $listuptd"'"}'
+
 sleep 3
 
 ## TODO create script to update all upgradable apt list, included docker service, because all containers are stopped.
 
-send_message "[SQL-BAK][AFTER ] Updating Plex Media Server..."
+echo "[SQL-BAK][AFTER ] Updating Plex Media Server..."
 sudo apt -y install plexmediaserver
 sleep 3
