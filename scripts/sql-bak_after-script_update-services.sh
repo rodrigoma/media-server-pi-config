@@ -18,9 +18,9 @@ for pkg in $(apt list --upgradable 2>/dev/null | awk -F/ 'NR>1 {print $1}'); do
   listuptd="$listuptd\n- $pkg"
 done
 
-curl http://192.168.10.100:9000/notify/465a67f962121ed2e5f0e6b55c3a75292903c1dbd5ba9bb5d0a85f0aa27ee6d2 \
-  -H "Content-Type: application/json" \
-  -d '{ "title":"[SQL-BAK][AFTER ] Apps to update", "body":"'"execute manually: $listuptd"'"}'
+#curl http://192.168.10.100:9000/notify/465a67f962121ed2e5f0e6b55c3a75292903c1dbd5ba9bb5d0a85f0aa27ee6d2 \
+#  -H "Content-Type: application/json" \
+#  -d '{ "title":"[SQL-BAK][AFTER ] Apps to update", "body":"'"execute manually: $listuptd"'"}'
 
 sleep 3
 
