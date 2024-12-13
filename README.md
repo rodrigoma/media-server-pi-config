@@ -184,3 +184,6 @@ https://stackoverflow.com/questions/9457233/unlimited-bash-history
 
 https://github.com/plexdrive/plexdrive/issues/421
 
+https://medium.com/javarevisited/java-17-on-the-raspberry-pi-d5a4d3e0e8ca
+https://franciscochaves.com.br/blog/instale-o-gradle-com-sdkman/
+
