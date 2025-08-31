@@ -45,14 +45,6 @@ rm pi_cron
 
 echo "" && sleep 2
 
-echo "---------- Script Update Docker Images"
-
-echo "give executable rights"
-chmod +x $HOME/scripts/update_docker_images.sh
-chmod +x $HOME/scripts/06_*_docker_run*.sh
-
-echo "" && sleep 2
-
 echo "---------- Scripts SqlBak"
 
 echo "give executable rights"

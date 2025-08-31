@@ -19,7 +19,10 @@ send_message()
 
 echo "$(date)"
 
-while [ ! -f /media/1TB/wakeup.txt -o ! -f /media/2TB/wakeup.txt -o ! -f /media/4TB/wakeup.txt -o ! -f /media/4TBII/wakeup.txt ]; do
+sleep 30
+
+#while [ ! -f /media/1TB/wakeup.txt -o ! -f /media/2TB/wakeup.txt -o ! -f /media/4TB/wakeup.txt -o ! -f /media/4TBII/wakeup.txt ]; do
+while [ ! -f /media/14TB/wakeup.txt -o ]; do
     echo 'HDDs not mount yet'
     sleep 5
 done
@@ -31,22 +34,22 @@ sleep 10
 hostname -I | send_message "[  IP   ] $(awk '{print $1}')"
 sleep 10
 
-# get all docker container names
-containers=$(docker ps -a --format "{{.Names}}" | grep -v "plexdrive")
-host=$(hostname)
+###### start first essencial containers
+###### after start containers that depends from other containers
 
-# loop through all containers
-for container in $containers
-do
-  echo "Start Container: $container"
-  
-  docker start $container
-  send_message "[STARTED] $container"
-  sleep 10
-  
-  echo ================================
-done
+# get all docker container labeled sqlbak.start.first=true
+start_first=$(docker ps --filter "label=sqlbak.start.first=true" --format "{{.Names}}")
+send_message "[STARTED] Starting first containers: $start_first ..."
+docker start $start_first
 
-echo "Start Plex Media Service"
+sleep 30
+
+# get all docker container labeled sqlbak.start.first=false
+start_later=$(docker ps --filter "label=sqlbak.start.first=false" --format "{{.Names}}")
+send_message "[STARTED] Starting later containers: $start_later ..."
+docker start $start_later
+
+sleep 5
+
+send_message "[STARTED] Starting Plex Media Server..."
 sudo service plexmediaserver start
-send_message "[STARTED] Plex Media Server"
