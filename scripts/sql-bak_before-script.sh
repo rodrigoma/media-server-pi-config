@@ -18,12 +18,22 @@ send_message()
 
 send_message "[SQL-BAK][BEFORE] Backup process started..."
 
-# get all docker container names excluding plexdrive
-containers=$(docker ps -a --format "{{.Names}}" | grep -v "plexdrive")
+###### stop first containers that not depend from other containers
+###### after stop essencial containers
 
-# Stop all docker containers
-send_message "[SQL-BAK][BEFORE] Stoping containers: $containers ..."
-docker stop $containers
+# get all docker container labeled sqlbak.stop.first=true
+stop_first=$(docker ps -a --filter "label=sqlbak.stop.first=true" --format "{{.Names}}")
+send_message "[SQL-BAK][BEFORE] Stoping first containers: $stop_first ..."
+docker stop $stop_first
+
+sleep 10
+
+# get all docker container labeled sqlbak.stop.first=false
+stop_later=$(docker ps -a --filter "label=sqlbak.stop.first=false" --format "{{.Names}}")
+send_message "[SQL-BAK][BEFORE] Stoping later containers: $stop_later ..."
+docker stop $stop_later
+
+sleep 5
 
 # Stop plex
 send_message "[SQL-BAK][BEFORE] Stoping Plex Media Server..."

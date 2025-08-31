@@ -6,6 +6,9 @@ sudo docker run -d \
 	--name mylar \
 	--hostname mylar \
 	--network host \
+	--label=sqlbak.stop.first=true \
+	--label=sqlbak.start.first=false \
+	--label=com.centurylinklabs.watchtower.enable=true \
 	-v /home/pi/centerMedia/SupportApps/mylar/data:/config \
 	-v /home/pi/downloads/torrents/complete:/downloads \
 	-v /home/pi/downloads/mylar:/comics \

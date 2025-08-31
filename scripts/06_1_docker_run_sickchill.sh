@@ -6,6 +6,9 @@ sudo docker run -d \
 	--name sickchill \
 	--hostname sickchill \
 	--network host \
+	--label=sqlbak.stop.first=true \
+	--label=sqlbak.start.first=false \
+	--label=com.centurylinklabs.watchtower.enable=true \
 	-v /home/pi/centerMedia/SupportApps/sickchill/data:/config \
 	-v /home/pi/downloads/torrents/complete:/downloads \
 	-v /home/pi/digaoflix/tv_ongoing:/tv \

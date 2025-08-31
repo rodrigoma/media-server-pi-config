@@ -6,6 +6,9 @@ sudo docker run -d \
 	--name wiznote \
 	--hostname wiznote \
 	--network host \
+	--label=sqlbak.stop.first=true \
+	--label=sqlbak.start.first=false \
+	--label=com.centurylinklabs.watchtower.enable=true \
 	-v /home/pi/centerMedia/SupportApps/wiznote/data:/wiz/storage \
 	-e PUID=1000 \
 	-e PGID=1000 \

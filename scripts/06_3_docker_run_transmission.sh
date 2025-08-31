@@ -6,6 +6,9 @@ sudo docker run -d \
 	--name transmission \
 	--hostname transmission \
 	--network host \
+	--label=sqlbak.stop.first=true \
+	--label=sqlbak.start.first=false \
+	--label=com.centurylinklabs.watchtower.enable=true \
 	-v /home/pi/centerMedia/SupportApps/transmission/config:/config \
 	-v /home/pi/centerMedia/SupportApps/transmission/watch:/watch \
 	-v /home/pi/downloads/torrents:/downloads \
