@@ -1,7 +1,0 @@
-all:
-  vars:
-    ansible_port: 8022
-    ansible_user: root
-  hosts:
-    rasp-pi:
-      ansible_host: 0.0.0.0

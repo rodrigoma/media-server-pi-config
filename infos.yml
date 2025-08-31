@@ -1,5 +1,6 @@
+---
 - name: Infos
-  hosts: all
+  hosts: raspberrypi
   tasks:
     - name: Displays the distribution name and version
       command: cat /etc/os-release

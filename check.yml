@@ -1,8 +1,10 @@
+---
 - name: Check connection
-  hosts: all
+  hosts: raspberrypi
+  gather_facts: no
   tasks:
     - name: Ping my host
-      ansible.builtin.ping:
+      ping:
 
     - name: Print message
       ansible.builtin.debug:

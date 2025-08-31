@@ -209,3 +209,12 @@ executar ansible `ansible-playbook -i inventory.yml main.yml -k`
 show infos `ansible-playbook -i inventory.yml infos.yml -k`
 
 check connection `ansible-playbook -i inventory.yml check.yml -k`
+
+## pi-ci
+
+https://github.com/ptrsr/pi-ci/pull/15
+
+## examples de ansible
+
+https://github.com/Heaven-Waves/central-node
+
