@@ -29,3 +29,6 @@ Temporary Items
 
 # Log files
 *.log
+
+# Intelij
+.idea
