@@ -1,0 +1,73 @@
+---
+- name: Test Ansible connectivity to Raspberry Pi
+  hosts: raspberry_pi
+  gather_facts: yes
+  
+  tasks:
+    - name: Ping test
+      ansible.builtin.ping:
+      register: ping_result
+    
+    - name: Display ping result
+      ansible.builtin.debug:
+        msg: "✅ Ping successful! Connection to {{ inventory_hostname }} ({{ ansible_host }}) is working."
+    
+    - name: Gather system information
+      ansible.builtin.debug:
+        msg:
+          - "Hostname: {{ ansible_hostname }}"
+          - "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+          - "Architecture: {{ ansible_architecture }}"
+          - "Python: {{ ansible_python_version }}"
+          - "IP Address: {{ ansible_default_ipv4.address | default('N/A') }}"
+    
+    - name: Check if running on Raspberry Pi
+      ansible.builtin.command: cat /proc/cpuinfo
+      register: cpuinfo
+      changed_when: false
+    
+    - name: Verify Raspberry Pi hardware
+      ansible.builtin.debug:
+        msg: "✅ This is a Raspberry Pi!"
+      when: "'Raspberry Pi' in cpuinfo.stdout or 'BCM' in cpuinfo.stdout"
+    
+    - name: Check available disk space
+      ansible.builtin.shell: 'df -h / | tail -1 | awk ''{print "Total: "$2" | Used: "$3" | Available: "$4" | Usage: "$5}'''
+      register: disk_space
+      changed_when: false
+    
+    - name: Display disk space
+      ansible.builtin.debug:
+        msg: "Disk space: {{ disk_space.stdout }}"
+    
+    - name: Check memory
+      ansible.builtin.shell: 'free -h | grep Mem | awk ''{print "Total: "$2" | Used: "$3" | Available: "$7}'''
+      register: memory
+      changed_when: false
+    
+    - name: Display memory
+      ansible.builtin.debug:
+        msg: "Memory: {{ memory.stdout }}"
+    
+    - name: Test sudo access
+      ansible.builtin.command: whoami
+      become: yes
+      register: sudo_test
+      changed_when: false
+    
+    - name: Verify sudo works
+      ansible.builtin.debug:
+        msg: "✅ Sudo access confirmed (running as: {{ sudo_test.stdout }})"
+      when: sudo_test.stdout == "root"
+    
+    - name: Final success message
+      ansible.builtin.debug:
+        msg:
+          - "================================================"
+          - "✅ ALL CONNECTIVITY TESTS PASSED!"
+          - "================================================"
+          - "You can now proceed to the next phases."
+          - "Host: {{ inventory_hostname }}"
+          - "IP: {{ ansible_host }}"
+          - "User: {{ ansible_user }}"
+          - "================================================"
