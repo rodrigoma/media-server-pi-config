@@ -26,3 +26,6 @@ Temporary Items
 .apdisk
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#macOS
+
+# Log files
+*.log
