@@ -1,25 +1,40 @@
 # Media Server Pi Config
 
-Instalation/Configuration of..
-- [Raspberry Pi OS and SSH](#raspberry-pi-os-and-ssh)
-- [GIT](#git)
-- [Export Variables](export-variables)
-- [Configurations](#configurations)
-- [Static IP](#static-ip)
-- [NO-IP](#no-ip)
-- [Mount External HDD](#mount-external-hdd)
-- [Samba](#samba)
-- [Plex Media Server](#plex-media-server)
-- [Docker](#docker)
-  - [Sickchill](#sickchill)
-  - [Mylar](#mylar)
-  - [Transmission](#transmission)
-  - [PyLoad](#pyload)
-  - [Plexdrive](#plexdrive)
-  - [Komga](#komga)
-  - [WizNote](#wiznote)
-  - [WatchTower](#watchtower)
-- [SqlBak](#sqlbak)
+
+## 1 - Prepare SD Card with OS
+
+Insert a SD Card on your PC/Notebook
+
+Download and execute the last version of [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
+
+Pick the options...
+- Raspberry Pi Device = Pick the correct model of your RPi board
+- Operating System = Raspberry Pi OS (other) > Raspberry Pi OS Lite (64-bit)
+- Storate = Pick your SD Card
+
+Press *Next*
+
+We will made a pre-configs going to *Edit Settings*
+
+on General Tab
+- Set hostname: pi.local
+- Set username: pi
+- Set password: <your password>
+- Configure wireless LAN (optional with will use wired internet)
+- Set locale settings
+
+Services Tab
+- Enable SSH and Use password authentication
+
+Save settings and finish the OS instalation in SD Card.
+
+
+## 2 - Using SSD (optional)
+
+IR A TRAS DAS CONFIGURAÇOES PARA COPIAR O CONTEUDO DO SDCARD PARA O SSD.
+
+
+## 3
 
 
 ## Raspberry Pi OS and SSH
@@ -187,3 +202,13 @@ https://github.com/plexdrive/plexdrive/issues/421
 https://medium.com/javarevisited/java-17-on-the-raspberry-pi-d5a4d3e0e8ca
 https://franciscochaves.com.br/blog/instale-o-gradle-com-sdkman/
 
+## mac
+
+install brew and sshpass on mac
+https://www.cyberciti.biz/faq/how-to-install-sshpass-on-macos-os-x/
+
+executar ansible `ansible-playbook -i inventory.yml main.yml -k`
+
+show infos `ansible-playbook -i inventory.yml infos.yml -k`
+
+check connection `ansible-playbook -i inventory.yml check.yml -k`
