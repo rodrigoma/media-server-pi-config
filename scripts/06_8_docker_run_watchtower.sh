@@ -21,6 +21,6 @@ sudo docker run -d \
 	-e PUID=1000 \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \
-	containrrr/watchtower
+	nickfedor/watchtower:armhf-latest
 
 echo "----------[ END ] 06_8_docker_run_watchtower.sh"
