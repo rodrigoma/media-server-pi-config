@@ -29,3 +29,11 @@ sleep 3
 echo "[SQL-BAK][AFTER ] Updating Plex Media Server..."
 sudo apt -y install plexmediaserver
 sleep 3
+
+# Limpa cache do apt
+sudo apt clean
+sudo apt autoclean
+sudo apt autoremove
+
+# Limpa logs do systemd (mantém os últimos 100MB)
+sudo journalctl --vacuum-size=100M
