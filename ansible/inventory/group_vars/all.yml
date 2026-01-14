@@ -1,0 +1,47 @@
+---
+# Variáveis globais não-sensíveis
+# Para variáveis sensíveis, use secrets.yml com ansible-vault
+
+# Configurações gerais
+timezone: "America/Sao_Paulo"
+
+# Configurações de SSH
+ssh_port: "{{ vault_ssh_port | default(22) }}"
+
+# Diretórios base
+base_dir: "/home/pi"
+media_dir: "{{ base_dir }}/centerMedia"
+downloads_dir: "{{ base_dir }}/downloads"
+scripts_dir: "{{ base_dir }}/scripts"
+
+# Plex
+plex_user: pi
+plex_group: pi
+
+# Docker
+docker_dir: "{{ media_dir }}/SupportApps"
+docker_install_compose: true
+docker_users:
+  - pi
+
+# Transmission
+transmission_config_dir: "{{ docker_dir }}/transmission/config"
+transmission_watch_dir: "{{ docker_dir }}/transmission/watch"
+transmission_downloads_dir: "{{ downloads_dir }}/torrents"
+transmission_user: "{{ vault_transmission_user }}"
+transmission_password: "{{ vault_transmission_password }}"
+
+# Telegram
+telegram_chat_id: "{{ vault_telegram_chat_id }}"
+telegram_token: "{{ vault_telegram_token }}"
+telegram_token_watchtower: "{{ vault_telegram_token_watchtower }}"
+
+# Google Drive
+google_drive_folder_id: "{{ vault_google_drive_folder_id }}"
+
+# SqlBak
+sqlbak_token: "{{ vault_sqlbak_token }}"
+
+# WiFi
+wifi_ssid: "{{ vault_wifi_ssid }}"
+wifi_password: "{{ vault_wifi_password }}"
