@@ -1,0 +1,35 @@
+services:
+  homeassistant:
+    image: lscr.io/linuxserver/homeassistant:arm64v8-latest
+    user: "${USER_ID}:${GROUP_ID}"
+    container_name: homeassistant
+    hostname: homeassistant
+    networks:
+      - traefik
+    ports:
+      - 8123:8123
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.homeassistant.rule=Host(`homeassistant.${MY_DOMAIN}`)
+      - traefik.http.routers.homeassistant.entryPoints=websecure
+      - traefik.http.routers.homeassistant.tls=true
+      - traefik.http.routers.homeassistant.tls.certResolver=le
+      - traefik.http.routers.homeassistant.middlewares=basicAuth@docker
+      - traefik.http.services.homeassistant.loadBalancer.server.port=8123
+    environment:
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /var/run/dbus:/var/run/dbus:ro
+      - /home/pi/centerMedia/SupportApps/homeassistant/data:/config
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik
