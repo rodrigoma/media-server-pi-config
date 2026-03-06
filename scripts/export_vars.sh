@@ -369,6 +369,25 @@ else
 fi
 
 echo ""
+variable_name_plex_token=PLEX_TOKEN
+if [ -z ${PLEX_TOKEN+x} ]; then
+    echo "$variable_name_plex_token is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_plex_token:"
+    read variable_value_plex_token
+
+    echo ""
+    echo "adding " $variable_name_plex_token " to environment variables..."
+    sudo echo "export "$variable_name_plex_token"="$variable_value_plex_token >> ~/.bashrc
+    sudo echo $variable_name_plex_token"="$variable_value_plex_token >> ~/.profile
+    echo $variable_name_plex_token"="$variable_value_plex_token | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_plex_token is already set!";
+fi
+
+echo ""
 variable_name_sickgear_token=SICKGEAR_TOKEN
 if [ -z ${SICKGEAR_TOKEN+x} ]; then
     echo "$variable_name_sickgear_token is unset";

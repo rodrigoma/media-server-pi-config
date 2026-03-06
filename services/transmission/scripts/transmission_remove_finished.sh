@@ -60,3 +60,9 @@ curl "http://sickgear:7081/api/${SICKGEAR_TOKEN}/?cmd=sg.postprocess&path=/downl
 #curl "http://localhost:8081/api/${SICKCHILL_TOKEN}/?cmd=postprocess&path=/downloads&force_replace=0&force_next=1&return_data=0&process_method=move&is_priority=0&failed=0&delete=1&type=auto"
 
 echo "Files moved"
+
+sleep 30
+
+echo "Trigger Plex to refresh library"
+curl -s "http://host-gateway:32400/library/sections/all/refresh?X-Plex-Token=${PLEX_TOKEN}"
+echo "Plex library refresh triggered"
