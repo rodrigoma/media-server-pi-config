@@ -330,6 +330,82 @@ else
 fi
 
 
+echo ""
+variable_name_media_repo_path=MEDIA_REPO_PATH
+if [ -z ${MEDIA_REPO_PATH+x} ]; then
+    echo "$variable_name_media_repo_path is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_media_repo_path:"
+    read variable_value_media_repo_path
+
+    echo ""
+    echo "adding " $variable_name_media_repo_path " to environment variables..."
+    sudo echo "export "$variable_name_media_repo_path"="$variable_value_media_repo_path >> ~/.bashrc
+    sudo echo $variable_name_media_repo_path"="$variable_value_media_repo_path >> ~/.profile
+    echo $variable_name_media_repo_path"="$variable_value_media_repo_path | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_media_repo_path is already set!";
+fi
+
+echo ""
+variable_name_transmission_server=TRANSMISSION_SERVER
+if [ -z ${TRANSMISSION_SERVER+x} ]; then
+    echo "$variable_name_transmission_server is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_transmission_server:"
+    read variable_value_transmission_server
+
+    echo ""
+    echo "adding " $variable_name_transmission_server " to environment variables..."
+    sudo echo "export "$variable_name_transmission_server"="$variable_value_transmission_server >> ~/.bashrc
+    sudo echo $variable_name_transmission_server"="$variable_value_transmission_server >> ~/.profile
+    echo $variable_name_transmission_server"="$variable_value_transmission_server | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_transmission_server is already set!";
+fi
+
+echo ""
+variable_name_sickgear_token=SICKGEAR_TOKEN
+if [ -z ${SICKGEAR_TOKEN+x} ]; then
+    echo "$variable_name_sickgear_token is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_sickgear_token:"
+    read variable_value_sickgear_token
+
+    echo ""
+    echo "adding " $variable_name_sickgear_token " to environment variables..."
+    sudo echo "export "$variable_name_sickgear_token"="$variable_value_sickgear_token >> ~/.bashrc
+    sudo echo $variable_name_sickgear_token"="$variable_value_sickgear_token >> ~/.profile
+    echo $variable_name_sickgear_token"="$variable_value_sickgear_token | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_sickgear_token is already set!";
+fi
+
+echo ""
+variable_name_sickchill_token=SICKCHILL_TOKEN
+if [ -z ${SICKCHILL_TOKEN+x} ]; then
+    echo "$variable_name_sickchill_token is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_sickchill_token:"
+    read variable_value_sickchill_token
+
+    echo ""
+    echo "adding " $variable_name_sickchill_token " to environment variables..."
+    sudo echo "export "$variable_name_sickchill_token"="$variable_value_sickchill_token >> ~/.bashrc
+    sudo echo $variable_name_sickchill_token"="$variable_value_sickchill_token >> ~/.profile
+    echo $variable_name_sickchill_token"="$variable_value_sickchill_token | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_sickchill_token is already set!";
+fi
+
 if [ "$restart" = true ]; then
     source ~/.bashrc
     source ~/.profile

@@ -26,10 +26,15 @@ services:
       - USER=${TRANSMISSION_USER}
       - PASS=${TRANSMISSION_PASSWORD}
       - TRANSMISSION_WEB_HOME=/config/flood-for-transmission/
+      - TRANSMISSION_SERVER=${TRANSMISSION_SERVER}
+      - SICKGEAR_TOKEN=${SICKGEAR_TOKEN}
+      - SICKCHILL_TOKEN=${SICKCHILL_TOKEN}
+      - SCRIPT_TORRENT_DONE_FILENAME=/scripts/transmission_remove_finished.sh
     volumes:
       - /home/pi/centerMedia/SupportApps/transmission/config:/config
       - /home/pi/centerMedia/SupportApps/transmission/watch:/watch
       - /home/pi/downloads/torrents:/downloads
+      - ${MEDIA_REPO_PATH}/services/transmission/scripts:/scripts
     restart: unless-stopped
 
 networks:
