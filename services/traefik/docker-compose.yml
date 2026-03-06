@@ -33,6 +33,7 @@ services:
     labels:
       - sqlbak.stop.first=false
       - sqlbak.start.first=true
+      - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
       - traefik.http.middlewares.basicAuth.basicauth.users=${TRAEFIK_BASIC_AUTH}
       - traefik.http.routers.api.rule=Host(`${MY_DOMAIN}`) && PathPrefix(`/dashboard`) || Host(`${MY_DOMAIN}`) && PathPrefix(`/api`)
