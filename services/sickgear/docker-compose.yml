@@ -1,7 +1,6 @@
 services:
   sickgear:
     image: lscr.io/linuxserver/sickgear:arm64v8-latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: sickgear
     hostname: sickgear
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.sickgear.loadBalancer.server.port=7081
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/sickgear/data:/config
       - /home/pi/downloads/torrents/complete:/downloads

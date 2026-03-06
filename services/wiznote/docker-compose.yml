@@ -1,7 +1,6 @@
 services:
   wiznote:
     image: wiznote/wizserver:latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: wiznote
     hostname: wiznote
     networks:
@@ -22,6 +21,8 @@ services:
       - traefik.http.services.wiznote.loadBalancer.server.port=80
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/wiznote/data:/wiz/storage
     restart: unless-stopped

@@ -7,7 +7,6 @@ services:
       - traefik
     ports:
       - 9090:9090
-    user: "${USER_ID}:${GROUP_ID}"
     command:
       - --config.file=/etc/prometheus/prometheus.yml
       - --storage.tsdb.path=/prometheus
@@ -24,6 +23,8 @@ services:
       - traefik.http.services.prometheus.loadBalancer.server.port=9090
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/prometheus/data:/prometheus
       - /home/pi/centerMedia/SupportApps/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml

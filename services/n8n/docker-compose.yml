@@ -1,7 +1,6 @@
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n:latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: n8n
     hostname: n8n
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.n8n.loadBalancer.server.port=5678
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
       - GENERIC_TIMEZONE=America/Sao_Paulo
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - N8N_RUNNERS_ENABLED=true

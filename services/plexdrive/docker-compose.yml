@@ -1,7 +1,6 @@
 services:
   plexdrive:
     image: wiserain/plexdrive:latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: plexdrive
     hostname: plexdrive
     networks:
@@ -16,6 +15,8 @@ services:
       - com.centurylinklabs.watchtower.enable=false
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
       - PLEXDRIVE_OPTS="--root-node-id ${GOOGLE_DRIVE_FOLDER_ID}"
     volumes:
       - /home/pi/centerMedia/SupportApps/plexdrive/config:/config

@@ -1,7 +1,6 @@
 services:
   watchtower:
     image: nickfedor/watchtower:armhf-latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: watchtower
     hostname: watchtower
     networks:
@@ -9,8 +8,11 @@ services:
     labels:
       - sqlbak.stop.first=false
       - sqlbak.start.first=true
+      - com.centurylinklabs.watchtower.enable=true
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
       - WATCHTOWER_DEBUG=true
       - WATCHTOWER_LABEL_ENABLE=true
       - WATCHTOWER_HTTP_API_UPDATE=true
@@ -19,7 +21,7 @@ services:
       - WATCHTOWER_HTTP_API_TOKEN=${TRANSMISSION_PASSWORD}
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_SCHEDULE="0 0 17 * * 5"
-      - WATCHTOWER_NOTIFICATION_URL="telegram://${TELE_TOKEN_WATCHTOWER}@telegram?chats=${CHAT_ID}"
+      - WATCHTOWER_NOTIFICATION_URL=telegram://${TELE_TOKEN_WATCHTOWER}@telegram?chats=${CHAT_ID}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped

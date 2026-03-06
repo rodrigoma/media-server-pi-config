@@ -1,7 +1,6 @@
 services:
   sickchill:
     image: lscr.io/linuxserver/sickchill:arm64v8-latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: sickchill
     hostname: sickchill
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.sickchill.loadBalancer.server.port=8081
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/sickchill/data:/config
       - /home/pi/downloads/torrents/complete:/downloads

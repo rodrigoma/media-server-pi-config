@@ -1,7 +1,6 @@
 services:
   mylar:
     image: lscr.io/linuxserver/mylar3:arm64v8-latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: mylar
     hostname: mylar
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.mylar.loadBalancer.server.port=8090
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/mylar/data:/config
       - /home/pi/downloads/torrents/complete:/downloads

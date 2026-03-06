@@ -1,7 +1,6 @@
 services:
   tugtainer:
     image: ghcr.io/quenary/tugtainer:latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: tugtainer
     hostname: tugtainer
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.tugtainer.loadBalancer.server.port=80
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/tugtainer:/tugtainer
       - /var/run/docker.sock:/var/run/docker.sock:ro

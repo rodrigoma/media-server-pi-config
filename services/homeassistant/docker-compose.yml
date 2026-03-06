@@ -1,7 +1,6 @@
 services:
   homeassistant:
     image: lscr.io/linuxserver/homeassistant:arm64v8-latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: homeassistant
     hostname: homeassistant
     networks:
@@ -24,6 +23,8 @@ services:
       - traefik.http.services.homeassistant.loadBalancer.server.port=8123
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /var/run/dbus:/var/run/dbus:ro
       - /home/pi/centerMedia/SupportApps/homeassistant/data:/config

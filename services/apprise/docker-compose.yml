@@ -1,7 +1,6 @@
 services:
   apprise:
     image: caronc/apprise:latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: apprise
     hostname: apprise
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.apprise.loadBalancer.server.port=8000
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/apprise/config:/config
     restart: unless-stopped

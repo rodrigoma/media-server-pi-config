@@ -1,7 +1,6 @@
 services:
   wallos:
     image: bellamy/wallos:latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: wallos
     hostname: wallos
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.wallos.loadBalancer.server.port=80
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/wallos/db:/var/www/html/db
       - /home/pi/centerMedia/SupportApps/wallos/logos:/var/www/html/images/uploads/logos

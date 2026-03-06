@@ -1,7 +1,6 @@
 services:
   reposilite:
     image: dzikoysk/reposilite:latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: reposilite
     hostname: reposilite
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.reposilite.loadBalancer.server.port=9999
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
       - REPOSILITE_OPTS=--port 9999
     volumes:
       - /home/pi/centerMedia/SupportApps/reposilite:/app/data

@@ -1,7 +1,6 @@
 services:
   komga:
     image: gotson/komga:latest
-    user: "${USER_ID}:${GROUP_ID}"
     container_name: komga
     hostname: komga
     networks:
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.komga.loadBalancer.server.port=25600
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/centerMedia/SupportApps/komga/config:/config
       - /home/pi/plexdrive/data:/data

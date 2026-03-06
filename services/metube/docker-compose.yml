@@ -7,7 +7,6 @@ services:
       - traefik
     ports:
       - 9081:8081
-    user: "${USER_ID}:${GROUP_ID}"
     labels:
       - sqlbak.stop.first=false
       - sqlbak.start.first=true
@@ -21,6 +20,8 @@ services:
       - traefik.http.services.metube.loadBalancer.server.port=8081
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
     volumes:
       - /home/pi/downloads/metube:/downloads
     restart: unless-stopped
