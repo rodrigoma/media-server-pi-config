@@ -28,8 +28,6 @@ services:
       - /home/pi/digaoflix/tv_old/30min:/tvAntigas30min
       - /home/pi/digaoflix/tv_old/60min:/tvAntigas60min
       - /home/pi/digaoflix/on_streaming:/streaming
-    extra_hosts:
-      - "host-gateway:host-gateway"
     restart: unless-stopped
 
 networks:

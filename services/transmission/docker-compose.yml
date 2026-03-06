@@ -37,6 +37,8 @@ services:
       - /home/pi/centerMedia/SupportApps/transmission/watch:/watch
       - /home/pi/downloads/torrents:/downloads
       - ${MEDIA_REPO_PATH}/services/transmission/scripts:/scripts
+    extra_hosts:
+      - "host-gateway:host-gateway"
     restart: unless-stopped
 
 networks:
