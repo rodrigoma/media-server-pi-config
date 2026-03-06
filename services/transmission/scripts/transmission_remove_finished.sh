@@ -64,5 +64,5 @@ echo "Files moved"
 sleep 30
 
 echo "Trigger Plex to refresh library"
-curl -s "http://host-gateway:32400/library/sections/all/refresh?X-Plex-Token=${PLEX_TOKEN}"
+curl -s "http://host-gateway:32400/library/sections/2/refresh?X-Plex-Token=${PLEX_TOKEN}"
 echo "Plex library refresh triggered"
