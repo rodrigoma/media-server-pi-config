@@ -11,13 +11,13 @@ services:
       - 8080:8080
     command:
       - --api=true
-      - --api.insecure=false
+      - --api.insecure=true
       - --api.dashboard=true
       - --api.debug=true
       - --api.disabledashboardad=true
       - --ping=true
       - --providers.docker=true
-      - --providers.docker.exposedByDefault=true
+      - --providers.docker.exposedByDefault=false
       - --providers.docker.network=traefik
       - --entryPoints.web.address=:80
       - --entryPoints.web.http.redirections.entryPoint.to=websecure
