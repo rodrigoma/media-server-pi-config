@@ -29,6 +29,7 @@ services:
       - TRANSMISSION_SERVER=${TRANSMISSION_SERVER}
       - SICKGEAR_TOKEN=${SICKGEAR_TOKEN}
       - SICKCHILL_TOKEN=${SICKCHILL_TOKEN}
+      - SCRIPT_TORRENT_DONE_ENABLED=true
       - SCRIPT_TORRENT_DONE_FILENAME=/scripts/transmission_remove_finished.sh
     volumes:
       - /home/pi/centerMedia/SupportApps/transmission/config:/config
