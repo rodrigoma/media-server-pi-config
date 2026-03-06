@@ -16,7 +16,6 @@ services:
       - traefik.http.routers.sickgear.entryPoints=websecure
       - traefik.http.routers.sickgear.tls=true
       - traefik.http.routers.sickgear.tls.certResolver=le
-      - traefik.http.routers.sickgear.middlewares=basicAuth@docker
       - traefik.http.services.sickgear.loadBalancer.server.port=7081
     environment:
       - TZ=America/Sao_Paulo

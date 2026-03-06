@@ -16,7 +16,6 @@ services:
       - traefik.http.routers.komga.entryPoints=websecure
       - traefik.http.routers.komga.tls=true
       - traefik.http.routers.komga.tls.certResolver=le
-      - traefik.http.routers.komga.middlewares=basicAuth@docker
       - traefik.http.services.komga.loadBalancer.server.port=25600
     environment:
       - TZ=America/Sao_Paulo

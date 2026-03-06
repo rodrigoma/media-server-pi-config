@@ -16,7 +16,6 @@ services:
       - traefik.http.routers.mylar.entryPoints=websecure
       - traefik.http.routers.mylar.tls=true
       - traefik.http.routers.mylar.tls.certResolver=le
-      - traefik.http.routers.mylar.middlewares=basicAuth@docker
       - traefik.http.services.mylar.loadBalancer.server.port=8090
     environment:
       - TZ=America/Sao_Paulo
