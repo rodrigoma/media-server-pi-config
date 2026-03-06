@@ -16,7 +16,6 @@ services:
       - traefik.http.routers.wallos.entryPoints=websecure
       - traefik.http.routers.wallos.tls=true
       - traefik.http.routers.wallos.tls.certResolver=le
-      - traefik.http.routers.wallos.middlewares=basicAuth@docker
       - traefik.http.services.wallos.loadBalancer.server.port=80
     environment:
       - TZ=America/Sao_Paulo
