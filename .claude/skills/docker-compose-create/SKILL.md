@@ -1,6 +1,6 @@
 ---
-name: novo-servico
-description: Creates a new docker-compose service for the media-server-pi-config repository. Use this skill whenever the user runs /novo-servico with a Docker image name, or asks to add a new service/container to the stack, create a compose file for a new container, or set up a new docker service in the Pi media server.
+name: docker-compose-create
+description: Creates a new docker-compose service for the media-server-pi-config repository. Use this skill whenever the user runs /docker-compose-create with a Docker image name, or asks to add a new service/container to the stack, create a compose file for a new container, or set up a new docker service in the Pi media server.
 ---
 
 # Novo Serviço — Docker Compose Generator
