@@ -14,7 +14,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.pihole.rule=Host(`pihole.${MY_DOMAIN}`)
+      - traefik.http.routers.pihole.rule=Host(`pihole.${USER_DOMAIN}`)
       - traefik.http.routers.pihole.entryPoints=websecure
       - traefik.http.routers.pihole.tls=true
       - traefik.http.routers.pihole.tls.certResolver=le
