@@ -111,6 +111,14 @@ git checkout -b compose/service-<name>
 Then invoke the `/commit-push-pr` skill to handle the commit and PR. The PR should target the `main` branch. Suggest a commit message like:
 `Add docker-compose for <name> service`
 
+### 5. Return to main
+
+After the PR is created, run:
+
+```bash
+git checkout main
+```
+
 ## Reference examples
 
 ### Service WITH web UI (komga — comic server on port 25600):
