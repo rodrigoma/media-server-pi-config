@@ -1,0 +1,32 @@
+services:
+  pyload-ng:
+    image: lscr.io/linuxserver/pyload-ng:arm64v8-latest
+    container_name: pyload
+    hostname: pyload
+    networks:
+      - traefik
+    ports:
+      - 8000:8000
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.pyload.rule=Host(`pyload.${MY_DOMAIN}`)
+      - traefik.http.routers.pyload.entryPoints=websecure
+      - traefik.http.routers.pyload.tls=true
+      - traefik.http.routers.pyload.tls.certResolver=le
+      - traefik.http.services.pyload.loadBalancer.server.port=8000
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+    volumes:
+      - /home/pi/centerMedia/SupportApps/pyload/config:/config
+      - /home/pi/downloads/pyload:/downloads
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik

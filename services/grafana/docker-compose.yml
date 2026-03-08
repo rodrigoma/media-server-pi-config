@@ -1,0 +1,32 @@
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    hostname: grafana
+    networks:
+      - traefik
+    ports:
+      - 3000:3000
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.grafana.rule=Host(`grafana.${MY_DOMAIN}`)
+      - traefik.http.routers.grafana.entryPoints=websecure
+      - traefik.http.routers.grafana.tls=true
+      - traefik.http.routers.grafana.tls.certResolver=le
+      - traefik.http.routers.grafana.middlewares=basicAuth@docker
+      - traefik.http.services.grafana.loadBalancer.server.port=3000
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+    volumes:
+      - /home/pi/centerMedia/SupportApps/grafana:/var/lib/grafana
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik

@@ -1,0 +1,31 @@
+services:
+  plexdrive:
+    image: wiserain/plexdrive:latest
+    container_name: plexdrive
+    hostname: plexdrive
+    networks:
+      - traefik
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
+    labels:
+      - sqlbak.stop.first=false
+      - sqlbak.start.first=true
+      - com.centurylinklabs.watchtower.enable=false
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+      - PLEXDRIVE_OPTS=--root-node-id ${GOOGLE_DRIVE_FOLDER_ID}
+    volumes:
+      - /home/pi/centerMedia/SupportApps/plexdrive/config:/config
+      - /home/pi/plexdrive/data:/data:shared
+    restart: unless-stopped
+    security_opt:
+      - apparmor=unconfined
+
+networks:
+  traefik:
+    external: true
+    name: traefik

@@ -1,0 +1,33 @@
+services:
+  wiznote:
+    image: wiznote/wizserver:latest
+    container_name: wiznote
+    hostname: wiznote
+    networks:
+      - traefik
+    ports:
+      - 80:80
+      - 9269:9269/udp
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.wiznote.rule=Host(`wiznote.${MY_DOMAIN}`)
+      - traefik.http.routers.wiznote.entryPoints=websecure
+      - traefik.http.routers.wiznote.tls=true
+      - traefik.http.routers.wiznote.tls.certResolver=le
+      - traefik.http.routers.wiznote.middlewares=basicAuth@docker
+      - traefik.http.services.wiznote.loadBalancer.server.port=80
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+    volumes:
+      - /home/pi/centerMedia/SupportApps/wiznote/data:/wiz/storage
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik

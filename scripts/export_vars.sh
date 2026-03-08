@@ -8,6 +8,43 @@
 
 restart=false
 
+variable_name_user_id=USER_ID
+if [ -z ${USER_ID+x} ]; then
+    echo "$variable_name_user_id is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_user_id:"
+    read variable_value_user_id
+
+    echo ""
+    echo "adding " $variable_name_user_id " to environment variables..."
+    sudo echo "export "$variable_name_user_id"="$variable_value_user_id >> ~/.bashrc
+    sudo echo $variable_name_user_id"="$variable_value_user_id >> ~/.profile
+    echo $variable_name_user_id"="$variable_value_user_id | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_user_id is already set!";
+fi
+
+echo ""
+variable_name_group_id=GROUP_ID
+if [ -z ${GROUP_ID+x} ]; then
+    echo "$variable_name_group_id is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_group_id:"
+    read variable_value_group_id
+
+    echo ""
+    echo "adding " $variable_name_group_id " to environment variables..."
+    sudo echo "export "$variable_name_group_id"="$variable_value_group_id >> ~/.bashrc
+    sudo echo $variable_name_group_id"="$variable_value_group_id >> ~/.profile
+    echo $variable_name_group_id"="$variable_value_group_id | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_group_id is already set!";
+fi
+
 variable_name_chat_id=CHAT_ID
 if [ -z ${CHAT_ID+x} ]; then
     echo "$variable_name_chat_id is unset";
@@ -179,6 +216,101 @@ else
 fi
 
 echo ""
+variable_name_duckdns_token=DUCKDNS_TOKEN
+if [ -z ${DUCKDNS_TOKEN+x} ]; then
+    echo "$variable_name_duckdns_token is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_duckdns_token:"
+    read variable_value_duckdns_token
+
+    echo ""
+    echo "adding " $variable_name_duckdns_token " to environment variables..."
+    sudo echo "export "$variable_name_duckdns_token"="$variable_value_duckdns_token >> ~/.bashrc
+    sudo echo $variable_name_duckdns_token"="$variable_value_duckdns_token >> ~/.profile
+    echo $variable_name_duckdns_token"="$variable_value_duckdns_token | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_duckdns_token is already set!";
+fi
+
+echo ""
+variable_name_user_email=USER_EMAIL
+if [ -z ${USER_EMAIL+x} ]; then
+    echo "$variable_name_user_email is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_user_email:"
+    read variable_value_user_email
+
+    echo ""
+    echo "adding " $variable_name_user_email " to environment variables..."
+    sudo echo "export "$variable_name_user_email"="$variable_value_user_email >> ~/.bashrc
+    sudo echo $variable_name_user_email"="$variable_value_user_email >> ~/.profile
+    echo $variable_name_user_email"="$variable_value_user_email | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_user_email is already set!";
+fi
+
+echo ""
+variable_name_traefik_basic_auth=TRAEFIK_BASIC_AUTH
+if [ -z ${TRAEFIK_BASIC_AUTH+x} ]; then
+    echo "$variable_name_traefik_basic_auth is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_traefik_basic_auth:"
+    read variable_value_traefik_basic_auth
+
+    echo ""
+    echo "adding " $variable_name_traefik_basic_auth " to environment variables..."
+    sudo echo "export "$variable_name_traefik_basic_auth"="$variable_value_traefik_basic_auth >> ~/.bashrc
+    sudo echo $variable_name_traefik_basic_auth"="$variable_value_traefik_basic_auth >> ~/.profile
+    echo $variable_name_traefik_basic_auth"="$variable_value_traefik_basic_auth | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_traefik_basic_auth is already set!";
+fi
+
+echo ""
+variable_name_my_domain=MY_DOMAIN
+if [ -z ${MY_DOMAIN+x} ]; then
+    echo "$variable_name_my_domain is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_my_domain:"
+    read variable_value_my_domain
+
+    echo ""
+    echo "adding " $variable_name_my_domain " to environment variables..."
+    sudo echo "export "$variable_name_my_domain"="$variable_value_my_domain >> ~/.bashrc
+    sudo echo $variable_name_my_domain"="$variable_value_my_domain >> ~/.profile
+    echo $variable_name_my_domain"="$variable_value_my_domain | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_my_domain is already set!";
+fi
+
+echo ""
+variable_name_reposilite_port=REPOSILITE_PORT
+if [ -z ${REPOSILITE_PORT+x} ]; then
+    echo "$variable_name_reposilite_port is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_reposilite_port:"
+    read variable_value_reposilite_port
+
+    echo ""
+    echo "adding " $variable_name_reposilite_port " to environment variables..."
+    sudo echo "export "$variable_name_reposilite_port"="$variable_value_reposilite_port >> ~/.bashrc
+    sudo echo $variable_name_reposilite_port"="$variable_value_reposilite_port >> ~/.profile
+    echo $variable_name_reposilite_port"="$variable_value_reposilite_port | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_reposilite_port is already set!";
+fi
+
+echo ""
 variable_name_wifi_pass=WIFI_PASS
 if [ -z ${WIFI_PASS+x} ]; then
     echo "$variable_name_wifi_pass is unset";
@@ -197,6 +329,101 @@ else
     echo "$variable_name_wifi_pass is already set!";
 fi
 
+
+echo ""
+variable_name_media_repo_path=MEDIA_REPO_PATH
+if [ -z ${MEDIA_REPO_PATH+x} ]; then
+    echo "$variable_name_media_repo_path is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_media_repo_path:"
+    read variable_value_media_repo_path
+
+    echo ""
+    echo "adding " $variable_name_media_repo_path " to environment variables..."
+    sudo echo "export "$variable_name_media_repo_path"="$variable_value_media_repo_path >> ~/.bashrc
+    sudo echo $variable_name_media_repo_path"="$variable_value_media_repo_path >> ~/.profile
+    echo $variable_name_media_repo_path"="$variable_value_media_repo_path | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_media_repo_path is already set!";
+fi
+
+echo ""
+variable_name_transmission_server=TRANSMISSION_SERVER
+if [ -z ${TRANSMISSION_SERVER+x} ]; then
+    echo "$variable_name_transmission_server is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_transmission_server:"
+    read variable_value_transmission_server
+
+    echo ""
+    echo "adding " $variable_name_transmission_server " to environment variables..."
+    sudo echo "export "$variable_name_transmission_server"="$variable_value_transmission_server >> ~/.bashrc
+    sudo echo $variable_name_transmission_server"="$variable_value_transmission_server >> ~/.profile
+    echo $variable_name_transmission_server"="$variable_value_transmission_server | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_transmission_server is already set!";
+fi
+
+echo ""
+variable_name_plex_token=PLEX_TOKEN
+if [ -z ${PLEX_TOKEN+x} ]; then
+    echo "$variable_name_plex_token is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_plex_token:"
+    read variable_value_plex_token
+
+    echo ""
+    echo "adding " $variable_name_plex_token " to environment variables..."
+    sudo echo "export "$variable_name_plex_token"="$variable_value_plex_token >> ~/.bashrc
+    sudo echo $variable_name_plex_token"="$variable_value_plex_token >> ~/.profile
+    echo $variable_name_plex_token"="$variable_value_plex_token | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_plex_token is already set!";
+fi
+
+echo ""
+variable_name_sickgear_token=SICKGEAR_TOKEN
+if [ -z ${SICKGEAR_TOKEN+x} ]; then
+    echo "$variable_name_sickgear_token is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_sickgear_token:"
+    read variable_value_sickgear_token
+
+    echo ""
+    echo "adding " $variable_name_sickgear_token " to environment variables..."
+    sudo echo "export "$variable_name_sickgear_token"="$variable_value_sickgear_token >> ~/.bashrc
+    sudo echo $variable_name_sickgear_token"="$variable_value_sickgear_token >> ~/.profile
+    echo $variable_name_sickgear_token"="$variable_value_sickgear_token | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_sickgear_token is already set!";
+fi
+
+echo ""
+variable_name_sickchill_token=SICKCHILL_TOKEN
+if [ -z ${SICKCHILL_TOKEN+x} ]; then
+    echo "$variable_name_sickchill_token is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_sickchill_token:"
+    read variable_value_sickchill_token
+
+    echo ""
+    echo "adding " $variable_name_sickchill_token " to environment variables..."
+    sudo echo "export "$variable_name_sickchill_token"="$variable_value_sickchill_token >> ~/.bashrc
+    sudo echo $variable_name_sickchill_token"="$variable_value_sickchill_token >> ~/.profile
+    echo $variable_name_sickchill_token"="$variable_value_sickchill_token | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_sickchill_token is already set!";
+fi
 
 if [ "$restart" = true ]; then
     source ~/.bashrc

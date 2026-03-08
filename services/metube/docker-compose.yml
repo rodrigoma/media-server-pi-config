@@ -1,0 +1,32 @@
+services:
+  metube:
+    image: ghcr.io/alexta69/metube:latest
+    container_name: metube
+    hostname: metube
+    networks:
+      - traefik
+    ports:
+      - 9081:8081
+    labels:
+      - sqlbak.stop.first=false
+      - sqlbak.start.first=true
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.metube.rule=Host(`metube.${MY_DOMAIN}`)
+      - traefik.http.routers.metube.entryPoints=websecure
+      - traefik.http.routers.metube.tls=true
+      - traefik.http.routers.metube.tls.certResolver=le
+      - traefik.http.routers.metube.middlewares=basicAuth@docker
+      - traefik.http.services.metube.loadBalancer.server.port=8081
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+    volumes:
+      - /home/pi/downloads/metube:/downloads
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik
