@@ -361,7 +361,9 @@ fi
 echo ""
 variable_name_bot_telegram_token=BOT_TELEGRAM_TOKEN
 if [ -z ${BOT_TELEGRAM_TOKEN+x} ]; then
-    variable_value_bot_telegram_token="bot${_TELEGRAM_TOKEN}"
+    # Normalize _TELEGRAM_TOKEN to avoid double "bot" prefix (handle both raw and prefixed inputs)
+    normalized_telegram_token="${_TELEGRAM_TOKEN#bot}"
+    variable_value_bot_telegram_token="bot${normalized_telegram_token}"
     echo "adding " $variable_name_bot_telegram_token " (auto-derived) to environment variables..."
     sudo echo "export "$variable_name_bot_telegram_token"="$variable_value_bot_telegram_token >> ~/.bashrc
     sudo echo $variable_name_bot_telegram_token"="$variable_value_bot_telegram_token >> ~/.profile
