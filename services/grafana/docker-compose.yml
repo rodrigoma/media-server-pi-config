@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.grafana.rule=Host(`grafana.${MY_DOMAIN}`)
+      - traefik.http.routers.grafana.rule=Host(`grafana.${USER_DOMAIN}`)
       - traefik.http.routers.grafana.entryPoints=websecure
       - traefik.http.routers.grafana.tls=true
       - traefik.http.routers.grafana.tls.certResolver=le

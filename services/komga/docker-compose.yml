@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.komga.rule=Host(`komga.${MY_DOMAIN}`)
+      - traefik.http.routers.komga.rule=Host(`komga.${USER_DOMAIN}`)
       - traefik.http.routers.komga.entryPoints=websecure
       - traefik.http.routers.komga.tls=true
       - traefik.http.routers.komga.tls.certResolver=le

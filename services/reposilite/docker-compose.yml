@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.reposilite.rule=Host(`reposilite.${MY_DOMAIN}`)
+      - traefik.http.routers.reposilite.rule=Host(`reposilite.${USER_DOMAIN}`)
       - traefik.http.routers.reposilite.entryPoints=websecure
       - traefik.http.routers.reposilite.tls=true
       - traefik.http.routers.reposilite.tls.certResolver=le

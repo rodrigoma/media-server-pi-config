@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=true
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.apprise.rule=Host(`apprise.${MY_DOMAIN}`)
+      - traefik.http.routers.apprise.rule=Host(`apprise.${USER_DOMAIN}`)
       - traefik.http.routers.apprise.entryPoints=websecure
       - traefik.http.routers.apprise.tls=true
       - traefik.http.routers.apprise.tls.certResolver=le

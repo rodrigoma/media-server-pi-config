@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=true
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.metube.rule=Host(`metube.${MY_DOMAIN}`)
+      - traefik.http.routers.metube.rule=Host(`metube.${USER_DOMAIN}`)
       - traefik.http.routers.metube.entryPoints=websecure
       - traefik.http.routers.metube.tls=true
       - traefik.http.routers.metube.tls.certResolver=le

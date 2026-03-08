@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.n8n.rule=Host(`n8n.${MY_DOMAIN}`)
+      - traefik.http.routers.n8n.rule=Host(`n8n.${USER_DOMAIN}`)
       - traefik.http.routers.n8n.entryPoints=web,websecure
       - traefik.http.routers.n8n.tls=true
       - traefik.http.routers.n8n.tls.certResolver=le
@@ -23,7 +23,7 @@ services:
       - traefik.http.middlewares.n8n.headers.browserXSSFilter=true
       - traefik.http.middlewares.n8n.headers.contentTypeNosniff=true
       - traefik.http.middlewares.n8n.headers.forceSTSHeader=true
-      - traefik.http.middlewares.n8n.headers.SSLHost=${MY_DOMAIN}
+      - traefik.http.middlewares.n8n.headers.SSLHost=${USER_DOMAIN}
       - traefik.http.middlewares.n8n.headers.STSIncludeSubdomains=true
       - traefik.http.middlewares.n8n.headers.STSPreload=true
       - traefik.http.routers.n8n.middlewares=n8n@docker
@@ -34,12 +34,12 @@ services:
       - PGID=${GROUP_ID}
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - N8N_SECURE_COOKIE=false
-      - N8N_HOST=n8n.${MY_DOMAIN}
+      - N8N_HOST=n8n.${USER_DOMAIN}
       - N8N_PORT=5678
       - N8N_PROTOCOL=https
       - N8N_MIGRATE_FS_STORAGE_PATH=true
       - NODE_ENV=production
-      - WEBHOOK_URL=https://n8n.${MY_DOMAIN}/
+      - WEBHOOK_URL=https://n8n.${USER_DOMAIN}/
     volumes:
       - /home/pi/centerMedia/SupportApps/n8n:/home/node/.n8n
       - /home/pi/n8n_local_files:/files
