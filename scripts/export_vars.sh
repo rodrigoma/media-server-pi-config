@@ -291,24 +291,6 @@ else
     echo "$variable_name_my_domain is already set!";
 fi
 
-echo ""
-variable_name_reposilite_port=REPOSILITE_PORT
-if [ -z ${REPOSILITE_PORT+x} ]; then
-    echo "$variable_name_reposilite_port is unset";
-    echo "configure now..."
-
-    echo "Enter variable value for $variable_name_reposilite_port:"
-    read variable_value_reposilite_port
-
-    echo ""
-    echo "adding " $variable_name_reposilite_port " to environment variables..."
-    sudo echo "export "$variable_name_reposilite_port"="$variable_value_reposilite_port >> ~/.bashrc
-    sudo echo $variable_name_reposilite_port"="$variable_value_reposilite_port >> ~/.profile
-    echo $variable_name_reposilite_port"="$variable_value_reposilite_port | sudo tee -a /etc/environment
-    restart=true
-else
-    echo "$variable_name_reposilite_port is already set!";
-fi
 
 echo ""
 variable_name_wifi_pass=WIFI_PASS
