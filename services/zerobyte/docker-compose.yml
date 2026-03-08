@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.zerobyte.rule=Host(`zerobyte.${MY_DOMAIN}`)
+      - traefik.http.routers.zerobyte.rule=Host(`zerobyte.${USER_DOMAIN}`)
       - traefik.http.routers.zerobyte.entryPoints=websecure
       - traefik.http.routers.zerobyte.tls=true
       - traefik.http.routers.zerobyte.tls.certResolver=le
