@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.wallos.rule=Host(`wallos.${MY_DOMAIN}`)
+      - traefik.http.routers.wallos.rule=Host(`wallos.${USER_DOMAIN}`)
       - traefik.http.routers.wallos.entryPoints=websecure
       - traefik.http.routers.wallos.tls=true
       - traefik.http.routers.wallos.tls.certResolver=le

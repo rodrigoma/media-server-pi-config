@@ -14,7 +14,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.transmission.rule=Host(`transmission.${MY_DOMAIN}`)
+      - traefik.http.routers.transmission.rule=Host(`transmission.${USER_DOMAIN}`)
       - traefik.http.routers.transmission.entryPoints=websecure
       - traefik.http.routers.transmission.tls=true
       - traefik.http.routers.transmission.tls.certResolver=le
@@ -23,8 +23,8 @@ services:
       - TZ=America/Sao_Paulo
       - PUID=${USER_ID}
       - PGID=${GROUP_ID}
-      - USER=${TRANSMISSION_USER}
-      - PASS=${TRANSMISSION_PASSWORD}
+      - USER=${USERNAME}
+      - PASS=${PASSWORD}
       - TRANSMISSION_WEB_HOME=/config/flood-for-transmission/
       - TRANSMISSION_SERVER=${TRANSMISSION_SERVER}
       - PLEX_TOKEN=${PLEX_TOKEN}

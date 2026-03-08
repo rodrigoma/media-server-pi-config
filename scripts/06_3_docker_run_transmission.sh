@@ -12,8 +12,8 @@ sudo docker run -d \
 	-v /home/pi/centerMedia/SupportApps/transmission/config:/config \
 	-v /home/pi/centerMedia/SupportApps/transmission/watch:/watch \
 	-v /home/pi/downloads/torrents:/downloads \
-	-e USER=$TRANSMISSION_USER \
-	-e PASS=$TRANSMISSION_PASSWORD \
+	-e USER=$USERNAME \
+	-e PASS=$PASSWORD \
 	-e PUID=1000 \
 	-e PGID=1000 \
 	-e TZ=America/Sao_Paulo \

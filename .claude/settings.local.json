@@ -16,7 +16,8 @@
       "Bash(gh pr:*)",
       "Bash(mkdir *)",
       "Write",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(do:*)"
     ]
   }
 }

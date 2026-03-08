@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.tugtainer.rule=Host(`tugtainer.${MY_DOMAIN}`)
+      - traefik.http.routers.tugtainer.rule=Host(`tugtainer.${USER_DOMAIN}`)
       - traefik.http.routers.tugtainer.entryPoints=websecure
       - traefik.http.routers.tugtainer.tls=true
       - traefik.http.routers.tugtainer.tls.certResolver=le

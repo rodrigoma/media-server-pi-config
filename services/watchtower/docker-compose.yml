@@ -18,10 +18,10 @@ services:
       - WATCHTOWER_HTTP_API_UPDATE=true
       - WATCHTOWER_HTTP_API_PERIODIC_POLLS=false
       - WATCHTOWER_HTTP_API_METRICS=true
-      - WATCHTOWER_HTTP_API_TOKEN=${TRANSMISSION_PASSWORD}
+      - WATCHTOWER_HTTP_API_TOKEN=${PASSWORD}
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_SCHEDULE="0 0 17 * * 5"
-      - WATCHTOWER_NOTIFICATION_URL=telegram://${TELE_TOKEN_WATCHTOWER}@telegram?chats=${CHAT_ID}
+      - WATCHTOWER_NOTIFICATION_URL=telegram://${TELEGRAM_TOKEN}@telegram?chats=${TELEGRAM_CHAT_ID}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped

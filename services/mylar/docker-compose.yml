@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.mylar.rule=Host(`mylar.${MY_DOMAIN}`)
+      - traefik.http.routers.mylar.rule=Host(`mylar.${USER_DOMAIN}`)
       - traefik.http.routers.mylar.entryPoints=websecure
       - traefik.http.routers.mylar.tls=true
       - traefik.http.routers.mylar.tls.certResolver=le

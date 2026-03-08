@@ -82,7 +82,7 @@ networks:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.<name>.rule=Host(`<name>.${MY_DOMAIN}`)
+      - traefik.http.routers.<name>.rule=Host(`<name>.${USER_DOMAIN}`)
       - traefik.http.routers.<name>.entryPoints=websecure
       - traefik.http.routers.<name>.tls=true
       - traefik.http.routers.<name>.tls.certResolver=le
@@ -137,7 +137,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.komga.rule=Host(`komga.${MY_DOMAIN}`)
+      - traefik.http.routers.komga.rule=Host(`komga.${USER_DOMAIN}`)
       - traefik.http.routers.komga.entryPoints=websecure
       - traefik.http.routers.komga.tls=true
       - traefik.http.routers.komga.tls.certResolver=le

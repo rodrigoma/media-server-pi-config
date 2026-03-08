@@ -15,7 +15,7 @@ services:
       - sqlbak.start.first=true
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.prometheus.rule=Host(`prometheus.${MY_DOMAIN}`)
+      - traefik.http.routers.prometheus.rule=Host(`prometheus.${USER_DOMAIN}`)
       - traefik.http.routers.prometheus.entryPoints=websecure
       - traefik.http.routers.prometheus.tls=true
       - traefik.http.routers.prometheus.tls.certResolver=le

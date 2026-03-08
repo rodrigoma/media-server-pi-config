@@ -12,7 +12,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.sickchill.rule=Host(`sickchill.${MY_DOMAIN}`)
+      - traefik.http.routers.sickchill.rule=Host(`sickchill.${USER_DOMAIN}`)
       - traefik.http.routers.sickchill.entryPoints=websecure
       - traefik.http.routers.sickchill.tls=true
       - traefik.http.routers.sickchill.tls.certResolver=le

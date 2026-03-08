@@ -13,7 +13,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.wiznote.rule=Host(`wiznote.${MY_DOMAIN}`)
+      - traefik.http.routers.wiznote.rule=Host(`wiznote.${USER_DOMAIN}`)
       - traefik.http.routers.wiznote.entryPoints=websecure
       - traefik.http.routers.wiznote.tls=true
       - traefik.http.routers.wiznote.tls.certResolver=le

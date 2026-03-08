@@ -15,7 +15,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.homeassistant.rule=Host(`homeassistant.${MY_DOMAIN}`)
+      - traefik.http.routers.homeassistant.rule=Host(`homeassistant.${USER_DOMAIN}`)
       - traefik.http.routers.homeassistant.entryPoints=websecure
       - traefik.http.routers.homeassistant.tls=true
       - traefik.http.routers.homeassistant.tls.certResolver=le
