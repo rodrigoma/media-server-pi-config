@@ -14,7 +14,7 @@ services:
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.qbittorrent.rule=Host(`qbittorrent.${MY_DOMAIN}`)
+      - traefik.http.routers.qbittorrent.rule=Host(`qbittorrent.${USER_DOMAIN}`)
       - traefik.http.routers.qbittorrent.entryPoints=websecure
       - traefik.http.routers.qbittorrent.tls=true
       - traefik.http.routers.qbittorrent.tls.certResolver=le
