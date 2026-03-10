@@ -1,0 +1,29 @@
+services:
+  sqlbak:
+    build: .
+    image: sqlbak-local:latest
+    container_name: sqlbak
+    hostname: sqlbak
+    networks:
+      - traefik
+    labels:
+      - sqlbak.stop.first=false
+      - sqlbak.start.first=true
+      - com.centurylinklabs.watchtower.enable=false
+    environment:
+      - TZ=America/Sao_Paulo
+      - SQLBAK_TOKEN=${SQLBAK_TOKEN}
+      - SQLBAK_SERVER_NAME=pi
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - BOT_TELEGRAM_TOKEN=${BOT_TELEGRAM_TOKEN}
+    volumes:
+      - /home/pi/centerMedia/SupportApps/sqlbak/data:/var/lib/sqlbak
+      - /home/pi/backups:/home/pi/backups
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./scripts:/home/pi/scripts:ro
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik
