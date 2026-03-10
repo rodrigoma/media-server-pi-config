@@ -287,6 +287,27 @@ else
     echo "$variable_name_sickchill_token is already set!";
 fi
 
+# ── PyLoad ────────────────────────────────────────────────────────────────────
+
+echo ""
+variable_name_pyload_notification=PYLOAD_NOTIFICATION
+if [ -z ${PYLOAD_NOTIFICATION+x} ]; then
+    echo "$variable_name_pyload_notification is unset";
+    echo "configure now..."
+
+    echo "Enter variable value for $variable_name_pyload_notification:"
+    read variable_value_pyload_notification
+
+    echo ""
+    echo "adding " $variable_name_pyload_notification " to environment variables..."
+    sudo echo "export "$variable_name_pyload_notification"="$variable_value_pyload_notification >> ~/.bashrc
+    sudo echo $variable_name_pyload_notification"="$variable_value_pyload_notification >> ~/.profile
+    echo $variable_name_pyload_notification"="$variable_value_pyload_notification | sudo tee -a /etc/environment
+    restart=true
+else
+    echo "$variable_name_pyload_notification is already set!";
+fi
+
 # ── Derived variables (computed automatically, no user input needed) ───────────
 
 _USERNAME="${variable_value_username:-$USERNAME}"

@@ -21,8 +21,10 @@ services:
       - TZ=America/Sao_Paulo
       - PUID=${USER_ID}
       - PGID=${GROUP_ID}
+      - PYLOAD_NOTIFICATION=${PYLOAD_NOTIFICATION}
     volumes:
       - /home/pi/centerMedia/SupportApps/pyload/config:/config
+      - ./scripts:/config/scripts
       - /home/pi/downloads/pyload:/downloads
     restart: unless-stopped
 
