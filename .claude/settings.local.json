@@ -1,23 +1,24 @@
 {
   "permissions": {
     "allow": [
+      "Write",
+      "Read(~/.claude/**)",
+      "Read(~/.claude/plugins/**)",
+      "Bash(git:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Skill(commit-commands:commit-push-pr)",
-      "Skill(commit-commands:commit)",
-      "Read(~/.claude/**)",
-      "Read(~/.claude/plugins/**)",
-      "Bash(python3:*)",
-      "WebFetch(domain:hub.docker.com)",
-      "WebFetch(domain:github.com)",
       "Bash(git checkout:*)",
-      "WebFetch(domain:docs.linuxserver.io)",
       "Bash(gh pr:*)",
       "Bash(mkdir *)",
-      "Write",
-      "Bash(git:*)",
-      "Bash(do:*)"
+      "Bash(do:*)",
+      "Bash(python3:*)",
+      "Skill(commit-commands:commit-push-pr)",
+      "Skill(commit-commands:commit)",
+      "WebFetch(domain:hub.docker.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.linuxserver.io)",
+      "WebFetch(domain:docs.portainer.io)"
     ]
   }
 }
