@@ -12,10 +12,19 @@ echo "" && sleep 2
 echo "add ll alias"
 echo "alias ll='ls -laXh --color -h --group-directories-first'" > ~/.bash_aliases
 echo '
+unalias dpsa 2>/dev/null
 dpsa() {
   docker ps -a "$@" --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.RunningFor}}\t{{.Names}}" | \
-  sed -E "s/(.*Up.*)/$(printf "\033[32m")\1$(printf "\033[0m")/"
+  sed -E "s/(.*Up.*)/\x1b[32m&\x1b[0m/"
 }' >> ~/.bash_aliases
+
+echo '
+# Atalhos rápidos para o hardware do Pi
+alias temp='vcgencmd measure_temp'
+alias clock='vcgencmd measure_clock arm'
+alias vcore='vcgencmd measure_volts core'
+alias mem='free -h -t'
+' >> ~/.bash_aliases
 
 source ~/.bashrc
 
