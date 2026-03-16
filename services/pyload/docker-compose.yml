@@ -3,6 +3,8 @@ services:
     image: lscr.io/linuxserver/pyload-ng:arm64v8-latest
     container_name: pyload
     hostname: pyload
+    extra_hosts:
+      - "hal9000:192.168.10.150"
     networks:
       - traefik
     ports:
