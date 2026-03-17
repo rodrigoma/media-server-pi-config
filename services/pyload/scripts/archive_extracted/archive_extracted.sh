@@ -21,11 +21,12 @@ curl --fail --show-error --silent \
      -d "$json_payload" \
      http://apprise:8000/notify/${PYLOAD_NOTIFICATION} || true
 
-# Chamar HAL para organizar na biblioteca OST
-PACKAGE_NAME="$1"
-if [ -n "$PACKAGE_NAME" ]; then
+# Extrair nome da pasta a partir do path do container ($4)
+# Ex: /downloads/Mr. Deeds/ -> Mr. Deeds
+ALBUM_FOLDER=$(echo "$4" | sed 's|^/downloads/||' | sed 's|/$||')
+if [ -n "$ALBUM_FOLDER" ]; then
     curl -s -X POST http://hal9000:18789/hooks/agent \
          -H "Authorization: Bearer pyload-soundtracks-hal9000" \
          -H "Content-Type: application/json" \
-         -d "{\"message\": \"PyLoad terminou de extrair o package: $PACKAGE_NAME. Execute: python3 /home/pi/.openclaw/workspace/soundtracks_organize.py '$PACKAGE_NAME'\", \"name\": \"PyLoad\", \"deliver\": true, \"channel\": \"telegram\", \"to\": \"21587697\"}" || true
+         -d "{\"message\": \"PyLoad terminou de extrair: $ALBUM_FOLDER\", \"name\": \"PyLoad\", \"deliver\": true, \"channel\": \"telegram\", \"to\": \"21587697\"}" || true
 fi
