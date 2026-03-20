@@ -1,0 +1,17 @@
+services:
+  openvpn:
+    build: .
+    container_name: openvpn
+    hostname: openvpn
+    cap_add:
+      - NET_ADMIN      # necessário para OpenVPN criar interface tun
+    devices:
+      - /dev/net/tun   # necessário para OpenVPN
+    ports:
+      - "18800:18800"  # CDP do Chromium — acessível pelo Pi 5 em 192.168.10.100:18800
+    volumes:
+      - ./ovpn_configs:/etc/openvpn/configs:ro
+    environment:
+      - TZ=America/Sao_Paulo
+      - VPN_USER=${VPN_USER}
+      - VPN_PASS=${VPN_PASS}
