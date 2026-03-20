@@ -33,3 +33,7 @@ Temporary Items
 # Intelij
 .idea
 
+
+# Arquivos sensíveis — nunca commitar
+.env
+credentials.txt
