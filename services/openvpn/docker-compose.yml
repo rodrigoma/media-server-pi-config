@@ -1,0 +1,21 @@
+services:
+  openvpn:
+    build: .
+    container_name: openvpn
+    hostname: openvpn
+    # restart: "no" é intencional — este container é iniciado sob demanda pelo script
+    # soundtrack_hotlink_resolver.py e não deve reiniciar automaticamente
+    restart: "no"
+    cap_add:
+      - NET_ADMIN      # necessário para OpenVPN criar interface tun
+    devices:
+      - /dev/net/tun   # necessário para OpenVPN
+    ports:
+      - "192.168.10.100:18801:18801"  # CDP proxy — acessível pelo Pi 5 (192.168.10.150)
+    volumes:
+      - ./ovpn_configs:/etc/openvpn/configs:ro
+    environment:
+      - TZ=America/Sao_Paulo
+      - VPN_USER=${VPN_USER}
+      - VPN_PASS=${VPN_PASS}
+      - VPN_COUNTRY=${VPN_COUNTRY:-}  # opcional — se vazio, escolhe país aleatório
