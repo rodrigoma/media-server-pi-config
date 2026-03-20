@@ -8,7 +8,7 @@ services:
     devices:
       - /dev/net/tun   # necessário para OpenVPN
     ports:
-      - "18800:18800"  # CDP do Chromium — acessível pelo Pi 5 em 192.168.10.100:18800
+      - "18801:18801"  # CDP proxy — acessível pelo Pi 5 em 192.168.10.100:18801
     volumes:
       - ./ovpn_configs:/etc/openvpn/configs:ro
     environment:
