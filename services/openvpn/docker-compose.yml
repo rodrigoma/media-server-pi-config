@@ -3,6 +3,7 @@ services:
     build: .
     container_name: openvpn
     hostname: openvpn
+    restart: "no"
     cap_add:
       - NET_ADMIN      # necessário para OpenVPN criar interface tun
     devices:
@@ -15,3 +16,4 @@ services:
       - TZ=America/Sao_Paulo
       - VPN_USER=${VPN_USER}
       - VPN_PASS=${VPN_PASS}
+      - VPN_COUNTRY=${VPN_COUNTRY:-}  # opcional — se vazio, escolhe país aleatório
