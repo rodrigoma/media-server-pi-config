@@ -22,6 +22,30 @@ services:
       - APP_URL=https://beszel.${USER_DOMAIN}
     volumes:
       - /home/pi/centerMedia/SupportApps/beszel/data:/beszel_data
+      - /home/pi/centerMedia/SupportApps/beszel/socket:/beszel_socket
+    restart: unless-stopped
+
+  beszel-agent:
+    image: henrygd/beszel-agent:latest
+    container_name: beszel-agent
+    hostname: beszel-agent
+    network_mode: host
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+    environment:
+      - TZ=America/Sao_Paulo
+      - LISTEN=/beszel_socket/beszel.sock
+      - HUB_URL=http://localhost:8090
+      # TOKEN and KEY are generated in the Beszel web UI when adding a system.
+      # Fill these in after the first login, then restart the agent.
+      - TOKEN=
+      - KEY=
+    volumes:
+      - /home/pi/centerMedia/SupportApps/beszel/socket:/beszel_socket
+      - /home/pi/centerMedia/SupportApps/beszel/agent-data:/var/lib/beszel-agent
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: unless-stopped
 
 networks:
