@@ -1,0 +1,38 @@
+services:
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    hostname: pihole
+    networks:
+      - traefik
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 80:80/tcp
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.pihole.rule=Host(`pihole.${USER_DOMAIN}`)
+      - traefik.http.routers.pihole.entryPoints=websecure
+      - traefik.http.routers.pihole.tls=true
+      - traefik.http.routers.pihole.tls.certResolver=le
+      - traefik.http.services.pihole.loadBalancer.server.port=80
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+      - FTLCONF_webserver_api_password=${PIHOLE_PASSWORD}
+      - FTLCONF_dns_listeningMode=ALL
+    volumes:
+      - /home/pi/centerMedia/SupportApps/pihole/etc-pihole:/etc/pihole
+      - /home/pi/centerMedia/SupportApps/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik
