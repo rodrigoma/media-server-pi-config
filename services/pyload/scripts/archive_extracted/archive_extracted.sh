@@ -25,7 +25,7 @@ curl --fail --show-error --silent \
 # Ex: /downloads/Mr. Deeds/ -> Mr. Deeds
 ALBUM_FOLDER=$(echo "$4" | sed 's|^/downloads/||' | sed 's|/$||')
 if [ -n "$ALBUM_FOLDER" ]; then
-    curl -s -X POST http://hal9000:18789/hooks/agent \
+    curl -s -X POST http://rpi5:18789/hooks/agent \
          -H "Authorization: Bearer n8n-hal-hook-2026" \
          -H "Content-Type: application/json" \
          -d "{\"message\": \"PyLoad terminou de extrair: $ALBUM_FOLDER\", \"name\": \"PyLoad\", \"deliver\": true, \"agentId\": \"coda\", \"channel\": \"telegram\", \"to\": \"21587697\"}" || true
