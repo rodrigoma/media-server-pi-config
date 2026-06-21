@@ -3,6 +3,8 @@ services:
     image: lscr.io/linuxserver/transmission:arm64v8-latest
     container_name: transmission
     hostname: transmission
+    extra_hosts:
+      - "rpi4:host-gateway"
     networks:
       - traefik
     ports:
@@ -37,8 +39,6 @@ services:
       - /home/pi/centerMedia/SupportApps/transmission/watch:/watch
       - /home/pi/downloads/torrents:/downloads
       - ${MEDIA_REPO_PATH}/services/transmission/scripts:/scripts
-    extra_hosts:
-      - "host-gateway:host-gateway"
     restart: unless-stopped
 
 networks:
