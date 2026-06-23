@@ -3,6 +3,8 @@ services:
     image: bellamy/wallos:latest
     container_name: wallos
     hostname: wallos
+    extra_hosts:
+      - "rpi5:192.168.10.150"
     networks:
       - traefik
     ports:
