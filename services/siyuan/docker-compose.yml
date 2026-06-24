@@ -1,0 +1,33 @@
+services:
+  siyuan:
+    image: b3log/siyuan:latest
+    container_name: siyuan
+    hostname: siyuan
+    command: --workspace=/siyuan/workspace/
+    networks:
+      - traefik
+    ports:
+      - 6806:6806
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.siyuan.rule=Host(`siyuan.${USER_DOMAIN}`)
+      - traefik.http.routers.siyuan.entryPoints=websecure
+      - traefik.http.routers.siyuan.tls=true
+      - traefik.http.routers.siyuan.tls.certResolver=le
+      - traefik.http.services.siyuan.loadBalancer.server.port=6806
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+      - SIYUAN_ACCESS_AUTH_CODE=${PASSWORD}
+    volumes:
+      - /home/pi/centerMedia/SupportApps/siyuan/workspace:/siyuan/workspace
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik
