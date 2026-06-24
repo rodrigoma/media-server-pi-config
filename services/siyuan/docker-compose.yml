@@ -17,13 +17,12 @@ services:
       - traefik.http.routers.siyuan.entryPoints=websecure
       - traefik.http.routers.siyuan.tls=true
       - traefik.http.routers.siyuan.tls.certResolver=le
-      - traefik.http.routers.siyuan.middlewares=basicAuth@docker
       - traefik.http.services.siyuan.loadBalancer.server.port=6806
     environment:
       - TZ=America/Sao_Paulo
       - PUID=${USER_ID}
       - PGID=${GROUP_ID}
-      - SIYUAN_ACCESS_AUTH_CODE=${SIYUAN_ACCESS_AUTH_CODE}
+      - SIYUAN_ACCESS_AUTH_CODE=${PASSWORD}
     volumes:
       - /home/pi/centerMedia/SupportApps/siyuan/workspace:/siyuan/workspace
     restart: unless-stopped
