@@ -1,0 +1,39 @@
+services:
+  zerobyte:
+    image: ghcr.io/nicotsx/zerobyte:latest
+    container_name: zerobyte
+    hostname: zerobyte
+    networks:
+      - traefik
+    ports:
+      - 4096:4096
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.zerobyte.rule=Host(`zerobyte.${USER_DOMAIN}`)
+      - traefik.http.routers.zerobyte.entryPoints=websecure
+      - traefik.http.routers.zerobyte.tls=true
+      - traefik.http.routers.zerobyte.tls.certResolver=le
+      - traefik.http.services.zerobyte.loadBalancer.server.port=4096
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+      - BASE_URL=https://zerobyte.${MY_DOMAIN}
+      - APP_SECRET=${ZEROBYTE_APP_SECRET}
+      - PORT=4096
+    volumes:
+      - /home/pi/centerMedia/SupportApps/zerobyte/data:/var/lib/zerobyte
+      - /etc/localtime:/etc/localtime:ro
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse:/dev/fuse
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik
