@@ -18,7 +18,9 @@
       "WebFetch(domain:hub.docker.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.linuxserver.io)",
-      "WebFetch(domain:docs.portainer.io)"
+      "WebFetch(domain:docs.portainer.io)",
+      "WebFetch(domain:docs.netbird.io)",
+      "Bash(gh api:*)"
     ]
   }
 }
