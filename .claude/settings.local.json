@@ -18,7 +18,11 @@
       "WebFetch(domain:hub.docker.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:docs.linuxserver.io)",
-      "WebFetch(domain:docs.portainer.io)"
+      "WebFetch(domain:docs.portainer.io)",
+      "WebFetch(domain:beszel.dev)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:www.ntop.org)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }
