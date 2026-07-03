@@ -1,0 +1,35 @@
+services:
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:latest
+    container_name: mealie
+    hostname: mealie
+    networks:
+      - traefik
+    ports:
+      - 9925:9000
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.mealie.rule=Host(`mealie.${USER_DOMAIN}`)
+      - traefik.http.routers.mealie.entryPoints=websecure
+      - traefik.http.routers.mealie.tls=true
+      - traefik.http.routers.mealie.tls.certResolver=le
+      - traefik.http.services.mealie.loadBalancer.server.port=9000
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+      - ALLOW_SIGNUP=false
+      - BASE_URL=https://mealie.${USER_DOMAIN}
+      - MAX_WORKERS=1
+      - WEB_CONCURRENCY=1
+    volumes:
+      - /home/pi/centerMedia/SupportApps/mealie/data:/app/data
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
+    name: traefik
