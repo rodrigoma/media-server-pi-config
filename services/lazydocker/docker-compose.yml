@@ -21,7 +21,7 @@ services:
     stdin_open: true
     tty: true
     build:
-      context: https://github.com/jesseduffield/lazydocker.git
+      context: https://github.com/jesseduffield/lazydocker.git#v0.25.2
       args:
         BASE_IMAGE_BUILDER: arm64v8/golang
         GOARCH: arm64
