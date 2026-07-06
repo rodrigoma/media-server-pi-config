@@ -1,24 +1,23 @@
 services:
   lazydocker:
-    # Imagem oficial (lazyteam/lazydocker) é somente amd64 -> no arm64 do Pi
-    # precisamos buildar do fonte cruzando pra arm64.
-    build:
-      context: https://github.com/jesseduffield/lazydocker.git
-      args:
-        BASE_IMAGE_BUILDER: arm64v8/golang
-        GOARCH: arm64
-        GOARM: ""
     image: lazydocker:local
     container_name: lazydocker
     hostname: lazydocker
-    # TUI de terminal: precisa de stdin + tty. Sem web, sem porta, sem Traefik.
-    stdin_open: true
-    tty: true
-    # watchtower NÃO habilitado de propósito: a imagem é buildada localmente;
-    # um pull automático traria a versão amd64 e quebraria o container.
     environment:
       - TZ=America/Sao_Paulo
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/pi/centerMedia/SupportApps/lazydocker:/.config/jesseduffield/lazydocker
     restart: unless-stopped
+    # Itens específicos do lazydocker (não existem nos outros composes):
+    # - TUI de terminal: precisa de stdin + tty (sem web, sem porta/Traefik).
+    # - Imagem oficial lazyteam/lazydocker é só amd64 -> build do fonte cruzando pra arm64.
+    # - watchtower fica desabilitado de propósito (build local; pull traria amd64).
+    stdin_open: true
+    tty: true
+    build:
+      context: https://github.com/jesseduffield/lazydocker.git
+      args:
+        BASE_IMAGE_BUILDER: arm64v8/golang
+        GOARCH: arm64
+        GOARM: ""
