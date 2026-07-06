@@ -1,0 +1,28 @@
+services:
+  lazydocker:
+    image: lazydocker:local
+    container_name: lazydocker
+    hostname: lazydocker
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      # watchtower desabilitado de propósito: imagem buildada localmente;
+      # um pull automático traria a versão amd64 e quebraria o container.
+      - com.centurylinklabs.watchtower.enable=false
+    environment:
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/pi/centerMedia/SupportApps/lazydocker:/.config/jesseduffield/lazydocker
+    restart: unless-stopped
+    # Itens específicos do lazydocker (não existem nos outros composes):
+    # - TUI de terminal: precisa de stdin + tty (sem web, sem porta/Traefik).
+    # - Imagem oficial lazyteam/lazydocker é só amd64 -> build do fonte cruzando pra arm64.
+    stdin_open: true
+    tty: true
+    build:
+      context: https://github.com/jesseduffield/lazydocker.git#v0.25.2
+      args:
+        BASE_IMAGE_BUILDER: arm64v8/golang
+        GOARCH: arm64
+        GOARM: ""
