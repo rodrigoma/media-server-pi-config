@@ -5,7 +5,7 @@ services:
     build:
       context: https://github.com/jesseduffield/lazydocker.git
       args:
-        BASE_IMAGE_BUILDER: golang
+        BASE_IMAGE_BUILDER: arm64v8/golang
         GOARCH: arm64
         GOARM: ""
     image: lazydocker:local
