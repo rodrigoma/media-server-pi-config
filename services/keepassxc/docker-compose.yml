@@ -21,8 +21,8 @@ services:
       - TZ=America/Sao_Paulo
       - PUID=${USER_ID}
       - PGID=${GROUP_ID}
-      # Auth nativa da imagem (HTTP basic) — sem basicAuth do Traefik, conforme convenção
-      - CUSTOM_USER=rodrigo
+      # Auth nativa da imagem (HTTP basic)
+      - CUSTOM_USER=${USERNAME}
       - PASSWORD=${PASSWORD}
       # Hardening: desliga terminal/sudo/open-tools do desktop (só precisamos do KeePassXC)
       - HARDEN_DESKTOP=true
