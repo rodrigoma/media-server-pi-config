@@ -1,0 +1,38 @@
+services:
+  keepassxc:
+    image: lscr.io/linuxserver/keepassxc:latest
+    container_name: keepassxc
+    hostname: keepassxc
+    networks:
+      - traefik
+    ports:
+      - 3011:3001
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.keepassxc.rule=Host(`keepassxc.${USER_DOMAIN}`)
+      - traefik.http.routers.keepassxc.entryPoints=websecure
+      - traefik.http.routers.keepassxc.tls=true
+      - traefik.http.routers.keepassxc.tls.certResolver=le
+      - traefik.http.services.keepassxc.loadBalancer.server.port=3000
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=${USER_ID}
+      - PGID=${GROUP_ID}
+      # Auth nativa da imagem (HTTP basic)
+      - CUSTOM_USER=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      # Hardening: desliga terminal/sudo/open-tools do desktop (só precisamos do KeePassXC)
+      - HARDEN_DESKTOP=true
+    volumes:
+      - /home/pi/centerMedia/SupportApps/keepassxc/config:/config
+    restart: unless-stopped
+    # Recomendado pra imagens de desktop (LinuxServer)
+    shm_size: "1gb"
+
+networks:
+  traefik:
+    external: true
+    name: traefik
