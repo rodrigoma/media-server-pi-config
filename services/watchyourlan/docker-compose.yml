@@ -1,0 +1,22 @@
+services:
+  watchyourlan:
+    image: aceberg/watchyourlan:latest
+    container_name: watchyourlan
+    hostname: watchyourlan
+    environment:
+      - TZ=America/Sao_Paulo
+      # Interface da LAN a ser escaneada (Pi4 = eth0, confirmado via ip addr)
+      - IFACES=eth0
+      - HOST=0.0.0.0
+      - PORT=8840
+    volumes:
+      - /home/pi/centerMedia/SupportApps/watchyourlan/data:/data/WatchYourLAN
+    restart: unless-stopped
+    # Itens específicos do watchyourlan (não existem nos outros composes):
+    # - network_mode: host é OBRIGATÓRIO — o arp-scan precisa enxergar a LAN direto.
+    #   Como o Docker não permite host + networks juntos, este serviço NÃO entra na
+    #   rede traefik e NÃO tem labels/roteamento do Traefik.
+    # - Consequência: a UI fica exposta direto no host em http://<pi4>:8840 (sem TLS,
+    #   sem basicAuth). O próprio README do projeto alerta pra restringir por firewall.
+    # - Sem PUID/PGID: a imagem não usa essas vars (não é LinuxServer).
+    network_mode: host
