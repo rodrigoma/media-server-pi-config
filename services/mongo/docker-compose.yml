@@ -17,7 +17,7 @@ services:
       - TZ=America/Sao_Paulo
       # Credenciais root — só aplicadas no PRIMEIRO boot (data dir vazio).
       - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_ROOT_PASSWORD=${PASSWORD}
     volumes:
       - /home/pi/centerMedia/SupportApps/mongo/data:/data/db
     restart: unless-stopped
