@@ -1,0 +1,32 @@
+services:
+  lan-orangutan:
+    image: ghcr.io/291-group/lan-orangutan:latest
+    container_name: lan-orangutan
+    hostname: lan-orangutan
+    environment:
+      - TZ=America/Sao_Paulo
+      - ORANGUTAN_PORT=291
+      # Auth nativa do app (pede senha na 1ª abertura da UI). Convenção do Rodrigo
+      # p/ serviços com login próprio: usar ${PASSWORD}. Se preferir criar a senha
+      # manualmente na primeira abertura, comente a linha abaixo.
+      - ORANGUTAN_PASSWORD=${PASSWORD}
+    volumes:
+      # A imagem fixa ORANGUTAN_DATA_DIR=/var/lib/lan-orangutan; persistir aqui.
+      - /home/pi/centerMedia/SupportApps/lan-orangutan/data:/var/lib/lan-orangutan
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+      - NET_BIND_SERVICE
+    restart: unless-stopped
+    # Itens específicos do lan-orangutan (mesmo padrão do watchyourlan):
+    # - network_mode: host é OBRIGATÓRIO — o nmap precisa enxergar a LAN direto;
+    #   em bridge só veria outros containers (172.17.0.0/16). Como o Docker não
+    #   permite host + networks juntos, este serviço NÃO entra na rede traefik e
+    #   NÃO tem labels/roteamento do Traefik.
+    # - Consequência: a UI fica exposta direto no host em http://<pi4>:291
+    #   (a auth nativa do app protege; sem TLS/basicAuth do Traefik). Restringir
+    #   por firewall se necessário.
+    # - Roda como root (default da imagem) + caps: NET_RAW/NET_ADMIN pro nmap ler a
+    #   tabela ARP (MAC + fabricante) e NET_BIND_SERVICE pra porta privilegiada 291.
+    # - Sem PUID/PGID: a imagem não usa essas vars (não é LinuxServer; roda root).
+    network_mode: host
