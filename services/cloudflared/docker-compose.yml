@@ -24,7 +24,8 @@ services:
     # - Fica na rede `traefik` pra alcançar os outros serviços por nome de container
     #   (ex.: destino http://n8n:5678) ou via IP do host (http://192.168.10.100:<porta>).
     # - Sem PUID/PGID: a imagem cloudflared não usa (não é LinuxServer).
-    # - Multi-arch (arm64 ok no Pi).
+    # - Arch: a imagem oficial só publica amd64/arm64 (NÃO tem arm/v7 32-bit).
+    #   Requer Pi 64-bit (arm64). Confirmado no Pi4 = aarch64/arm64 → pull OK.
 
 networks:
   traefik:
