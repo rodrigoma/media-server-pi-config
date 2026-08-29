@@ -28,7 +28,7 @@ services:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=${PASSWORD}
     volumes:
-      - /home/pi/centerMedia/SupportApps/rabbitmq/data:/var/lib/rabbitmq
+      - /home/pi/data-rabbitmq/data:/var/lib/rabbitmq
     restart: unless-stopped
 
 networks:
