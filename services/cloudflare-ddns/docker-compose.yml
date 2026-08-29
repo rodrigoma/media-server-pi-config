@@ -1,8 +1,8 @@
 services:
   cloudflare-ddns:
     image: favonia/cloudflare-ddns:latest
-    container_name: cloudflare-ddns
-    hostname: cloudflare-ddns
+    container_name: cf_ddns
+    hostname: cf_ddns
     networks:
       - traefik
     labels:
