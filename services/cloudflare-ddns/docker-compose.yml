@@ -1,0 +1,38 @@
+services:
+  cloudflare-ddns:
+    image: favonia/cloudflare-ddns:latest
+    container_name: cloudflare-ddns
+    hostname: cloudflare-ddns
+    networks:
+      - traefik
+    labels:
+      - sqlbak.stop.first=false
+      - sqlbak.start.first=true
+      - com.centurylinklabs.watchtower.enable=true
+    environment:
+      - TZ=America/Sao_Paulo
+      # Reusa o token que o Traefik já usa (Zone:DNS:Edit + Zone:Read em rodrigoma.com.br).
+      - CLOUDFLARE_API_TOKEN=${CF_DNS_API_TOKEN}
+      # Mantém ssh.rodrigoma.com.br apontando pro IP público atual da casa.
+      - DOMAINS=ssh.rodrigoma.com.br
+      # PROXIED=false (nuvem CINZA) é OBRIGATÓRIO — SSH não passa pelo proxy da
+      # Cloudflare. O favonia cria/atualiza um registro A DNS-only, que tem
+      # precedência sobre o curinga *.rodrigoma.com.br (proxied → túnel).
+      - PROXIED=false
+      # Sem IPv6 nesta rede.
+      - IP6_PROVIDER=none
+    restart: unless-stopped
+    # Hardening recomendado pela favonia (não precisa de root nem escrita).
+    read_only: true
+    cap_drop:
+      - all
+    security_opt:
+      - no-new-privileges:true
+    # DDNS: detecta o IP público (via trace da Cloudflare) e mantém o registro A
+    # em dia. Se o IP for estático, nunca muda; se for dinâmico, se auto-corrige.
+    # Multi-arch (arm64 ok no Pi4). Sem ports / sem Traefik (só saída).
+
+networks:
+  traefik:
+    external: true
+    name: traefik
