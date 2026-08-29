@@ -3,8 +3,6 @@ services:
     image: mongo:8.0.28-noble
     container_name: mongo
     hostname: mongo
-    networks:
-      - traefik
     ports:
       # LAN-only: acessível na rede local (host:container). SEM Traefik = não vai pro mundo.
       - 27017:27017
@@ -21,8 +19,3 @@ services:
     volumes:
       - /home/pi/data-mongo/data:/data/db
     restart: unless-stopped
-
-networks:
-  traefik:
-    external: true
-    name: traefik
