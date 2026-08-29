@@ -13,8 +13,9 @@ services:
       - TZ=America/Sao_Paulo
       # Reusa o token que o Traefik já usa (Zone:DNS:Edit + Zone:Read em rodrigoma.com.br).
       - CLOUDFLARE_API_TOKEN=${CF_DNS_API_TOKEN}
-      # Mantém ssh.rodrigoma.com.br apontando pro IP público atual da casa.
-      - DOMAINS=ssh.rodrigoma.com.br
+      # Mantém os hostnames dos dois Pi apontando pro IP público atual da casa
+      # (mesma saída pública; a PORTA é que separa Pi4 2072 x Pi5 2064).
+      - DOMAINS=pi4.rodrigoma.com.br,pi5.rodrigoma.com.br
       # PROXIED=false (nuvem CINZA) é OBRIGATÓRIO — SSH não passa pelo proxy da
       # Cloudflare. O favonia cria/atualiza um registro A DNS-only, que tem
       # precedência sobre o curinga *.rodrigoma.com.br (proxied → túnel).
