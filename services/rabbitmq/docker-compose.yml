@@ -5,8 +5,6 @@ services:
     # hostname FIXO é importante: o RabbitMQ nomeia o node como rabbit@<hostname>.
     # Se o hostname mudar, ele "perde" os dados (vira outro node).
     hostname: rabbitmq
-    networks:
-      - traefik
     ports:
       # LAN-only (sem Traefik).
       - 5672:5672       # AMQP
@@ -30,8 +28,3 @@ services:
     volumes:
       - /home/pi/data-rabbitmq/data:/var/lib/rabbitmq
     restart: unless-stopped
-
-networks:
-  traefik:
-    external: true
-    name: traefik
