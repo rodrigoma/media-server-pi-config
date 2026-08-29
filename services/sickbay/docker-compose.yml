@@ -1,0 +1,35 @@
+services:
+  sickbay:
+    image: ghcr.io/rodrigoma/sickbay:latest
+    container_name: sickbay
+    hostname: sickbay
+    networks:
+      - traefik
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.sickbay.rule=Host(`sickbay.${USER_DOMAIN}`)
+      - traefik.http.routers.sickbay.entryPoints=websecure
+      - traefik.http.routers.sickbay.tls=true
+      - traefik.http.routers.sickbay.tls.certResolver=le
+      - traefik.http.routers.sickbay.middlewares=basicAuth@docker
+      - traefik.http.services.sickbay.loadBalancer.server.port=4700
+    environment:
+      - TZ=America/Sao_Paulo
+      - VAULT_DIR=/vault
+      - VAULT_HOST=0.0.0.0
+      - VAULT_PORT=4700
+    volumes:
+      # Vault montado como read-only (o sickbay só lê). Popular esta pasta no host
+      # com o conteúdo do vault antes/depois do 1º up.
+      - /home/pi/centerMedia/SupportApps/sickbay/vault:/vault:ro
+    restart: unless-stopped
+    # Acesso só via Traefik (https://sickbay.${USER_DOMAIN}) + basicAuth — SEM
+    # publicar porta no host, pra não expor o vault sem autenticação na LAN.
+
+networks:
+  traefik:
+    external: true
+    name: traefik
