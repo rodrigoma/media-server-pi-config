@@ -19,7 +19,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=${PASSWORD}
     volumes:
-      - /home/pi/centerMedia/SupportApps/mongo/data:/data/db
+      - /home/pi/data-mongo/data:/data/db
     restart: unless-stopped
 
 networks:
