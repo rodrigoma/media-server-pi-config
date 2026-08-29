@@ -5,6 +5,10 @@ services:
     hostname: sickbay
     networks:
       - traefik
+    ports:
+      # Exposto na LAN (http://<pi4>:4700). Acesso local é sem auth por opção do
+      # Rodrigo; a autenticação (basicAuth) fica na exposição externa via Traefik.
+      - 4700:4700
     labels:
       - sqlbak.stop.first=true
       - sqlbak.start.first=false
@@ -26,8 +30,8 @@ services:
       # com o conteúdo do vault antes/depois do 1º up.
       - /home/pi/centerMedia/SupportApps/sickbay/vault:/vault:ro
     restart: unless-stopped
-    # Acesso só via Traefik (https://sickbay.${USER_DOMAIN}) + basicAuth — SEM
-    # publicar porta no host, pra não expor o vault sem autenticação na LAN.
+    # Acesso: LAN direto em http://<pi4>:4700 (sem auth) e externo em
+    # https://sickbay.${USER_DOMAIN} via Traefik + basicAuth.
 
 networks:
   traefik:
