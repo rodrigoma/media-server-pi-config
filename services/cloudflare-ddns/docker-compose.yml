@@ -23,6 +23,7 @@ services:
       # Sem IPv6 nesta rede.
       - IP6_PROVIDER=none
     restart: unless-stopped
+    user: "${USER_ID}:${GROUP_ID}"
     # Hardening recomendado pela favonia (não precisa de root nem escrita).
     read_only: true
     cap_drop:
