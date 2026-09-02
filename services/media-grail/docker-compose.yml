@@ -6,8 +6,8 @@ services:
     networks:
       - traefik
     ports:
-      # Container escuta na 4700; sickbay já usa 4700 no host, então mapeia 4701.
-      - 4701:4700
+      # media-grail escuta na 4701 (sickbay usa a 4700).
+      - 4701:4701
     labels:
       - sqlbak.stop.first=true
       - sqlbak.start.first=false
@@ -17,12 +17,12 @@ services:
       - traefik.http.routers.media-grail.entryPoints=websecure
       - traefik.http.routers.media-grail.tls=true
       - traefik.http.routers.media-grail.tls.certResolver=le
-      - traefik.http.services.media-grail.loadBalancer.server.port=4700
+      - traefik.http.services.media-grail.loadBalancer.server.port=4701
     environment:
       - TZ=America/Sao_Paulo
       - GRAIL_DIR=/itens
       - GRAIL_HOST=0.0.0.0
-      - GRAIL_PORT=4700
+      - GRAIL_PORT=4701
     volumes:
       # Vault de markdown escrito pelo agente noutro lugar; aqui só leitura.
       - /home/pi/centerMedia/SupportApps/media-grail/itens:/itens:ro
