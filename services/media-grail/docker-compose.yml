@@ -1,0 +1,35 @@
+services:
+  media-grail:
+    image: ghcr.io/rodrigoma/media-grail:latest
+    container_name: media-grail
+    hostname: media-grail
+    networks:
+      - traefik
+    ports:
+      # media-grail escuta na 4701 (sickbay usa a 4700).
+      - 4701:4701
+    labels:
+      - sqlbak.stop.first=true
+      - sqlbak.start.first=false
+      - com.centurylinklabs.watchtower.enable=true
+      - traefik.enable=true
+      - traefik.http.routers.media-grail.rule=Host(`filmes.${USER_DOMAIN}`)
+      - traefik.http.routers.media-grail.entryPoints=websecure
+      - traefik.http.routers.media-grail.tls=true
+      - traefik.http.routers.media-grail.tls.certResolver=le
+      - traefik.http.services.media-grail.loadBalancer.server.port=4701
+    environment:
+      - TZ=America/Sao_Paulo
+      - GRAIL_DIR=/itens
+      - GRAIL_HOST=0.0.0.0
+      - GRAIL_PORT=4701
+    volumes:
+      # Vault de markdown escrito pelo agente noutro lugar; aqui só leitura.
+      - /home/pi/centerMedia/SupportApps/media-grail/itens:/itens:ro
+    restart: unless-stopped
+    # Lista pública de propósito (para sebos): sem basicAuth, quem tem o link lê.
+
+networks:
+  traefik:
+    external: true
+    name: traefik
