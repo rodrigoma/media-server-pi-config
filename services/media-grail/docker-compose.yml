@@ -1,17 +1,3 @@
-# media-grail: wishlist publica de filmes em midia fisica.
-# Servidor Node somente-leitura sobre markdown, zero dependencias.
-# Imagem construida pelo GitHub Actions (arm64) e publicada no ghcr (repo PRIVADO).
-#
-# Invariantes do projeto preservadas do compose original do repo:
-#   - read_only + volume :ro  -> o container NAO escreve em lugar nenhum.
-#   - GRAIL_HOST=0.0.0.0       -> obrigatorio p/ o Traefik alcancar; em 127.0.0.1 nao alcancaria.
-#   - porta NAO publicada      -> quem expoe e o Traefik, no subdominio.
-#   - SEM basicAuth de proposito-> a lista existe p/ um sebo abrir; quem tem o link le tudo.
-#     (por isso NAO ha middleware de auth aqui; se quiser proteger, adicionar basicAuth@docker)
-#
-# ghcr PRIVADO: o Pi precisa `docker login ghcr.io -u rodrigoma` (token com read:packages)
-# UMA vez antes do primeiro pull, senao volta `denied`.
-
 services:
   media-grail:
     image: ghcr.io/rodrigoma/media-grail:latest
@@ -19,43 +5,29 @@ services:
     hostname: media-grail
     networks:
       - traefik
-    read_only: true
-    tmpfs:
-      - /tmp
-    security_opt:
-      - no-new-privileges:true
+    ports:
+      # Container escuta na 4700; sickbay já usa 4700 no host, então mapeia 4701.
+      - 4701:4700
     labels:
       - sqlbak.stop.first=true
       - sqlbak.start.first=false
       - com.centurylinklabs.watchtower.enable=true
       - traefik.enable=true
-      - traefik.http.routers.media-grail.rule=Host(`media-grail.${USER_DOMAIN}`)
+      - traefik.http.routers.media-grail.rule=Host(`filmes.${USER_DOMAIN}`)
       - traefik.http.routers.media-grail.entryPoints=websecure
       - traefik.http.routers.media-grail.tls=true
       - traefik.http.routers.media-grail.tls.certResolver=le
       - traefik.http.services.media-grail.loadBalancer.server.port=4700
     environment:
       - TZ=America/Sao_Paulo
-      - PUID=${USER_ID}
-      - PGID=${GROUP_ID}
+      - GRAIL_DIR=/itens
       - GRAIL_HOST=0.0.0.0
       - GRAIL_PORT=4700
-      - GRAIL_DIR=/itens
     volumes:
-      # Vault de markdown escrito pelo agente noutro lugar; aqui SOMENTE LEITURA.
+      # Vault de markdown escrito pelo agente noutro lugar; aqui só leitura.
       - /home/pi/centerMedia/SupportApps/media-grail/itens:/itens:ro
-    healthcheck:
-      # Sem curl na imagem alpine; o proprio node bate na porta.
-      test:
-        - CMD
-        - node
-        - -e
-        - "fetch('http://127.0.0.1:4700/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
-      interval: 60s
-      timeout: 5s
-      retries: 3
-      start_period: 10s
     restart: unless-stopped
+    # Lista pública de propósito (para sebos): sem basicAuth, quem tem o link lê.
 
 networks:
   traefik:
