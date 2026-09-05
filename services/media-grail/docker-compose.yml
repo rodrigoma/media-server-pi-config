@@ -26,6 +26,7 @@ services:
     volumes:
       # Vault de markdown escrito pelo agente noutro lugar; aqui só leitura.
       - /home/pi/centerMedia/SupportApps/media-grail/itens:/itens:ro
+      - /home/pi/centerMedia/SupportApps/media-grail/versatil:/versatil:ro
     restart: unless-stopped
     # Lista pública de propósito (para sebos): sem basicAuth, quem tem o link lê.
 
